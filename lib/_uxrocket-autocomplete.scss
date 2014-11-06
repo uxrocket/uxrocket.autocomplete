@@ -1,0 +1,141 @@
+/* @author Bilal Cinarli */
+$autocomplete-version: 0.5;
+
+/** -------------------------------------------
+ 	Auto Complete Styles
+    ------------------------------------------- **/
+.uxitd-autocomplete-ready {
+
+}
+
+.uxitd-autocomplete-holder {
+	position: relative;
+	display: inline-block;
+
+	.icon-search {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 25px;
+        height: 100%;
+        font-size: 1.2em;
+        color: #37ade0;
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            right: 5px;
+            margin-top: -9px;
+        }
+	}
+
+	[class*="-column"],
+    .uxitd-autocomplete-ready {
+		width: 100%;
+	}
+}
+
+.uxitd-autocomplete-icon-clickable {
+    cursor: pointer;
+}
+
+.ui-menu {
+	padding: 0;
+	border: 1px solid #555;
+	background: #fff;
+	box-sizing: content-box;
+
+	&:after,
+	&:before { left: 25px; }
+
+	.ui-menu-item {
+        display: block;
+        float: none;
+        margin-top: 0;
+		border-top: 1px solid #eee;
+
+		&:first-child {
+			border-top: none
+		}
+
+		a {
+            margin: 0;
+			padding: 10px 5px;
+			border-radius: 1px;
+			color: #999;
+			cursor: pointer;
+			overflow: hidden;
+
+			&:hover {
+				background: #37ade0;
+				color: #fff;
+
+				.matched {
+					color: #fff;
+				}
+			}
+
+			&.ui-state-focus,
+			&.ui-state-active {
+				margin: 0;
+			}
+
+			.matched {
+				color: #37ade0;
+				font-weight: bold;
+			}
+		}
+
+		.item-image {
+			$img-size: 24px;
+
+			display: inline-block;
+            width: $img-size;
+            height: $img-size;
+			margin-right: 8px;
+			overflow: hidden;
+			vertical-align: middle;
+
+			img {
+				max-width: $img-size;
+				max-height: $img-size;
+			}
+		}
+	}
+
+	&.uxitd-category{
+        min-width: 200px;
+        padding-left: 150px;
+        max-height: 250px;
+        overflow: auto;
+
+		.ui-menu-item {
+			border-left: 1px solid #ccc;
+
+			a {
+				border-left: 1px solid #e5e5e5;
+			}
+		}
+	}
+
+    .uxitd-autocomplete-category {
+        position:absolute;
+        left:0;
+		padding: 10px;
+		font-weight: bold;
+        width:150px;
+        margin-top:-1px;
+	}
+}
+
+.ui-autocomplete {
+  max-height: 250px;
+  overflow: auto;
+}
+
+.ui-menu-item {
+  em {
+    margin-left: 32px;
+    font-size: 11px;
+  }
+}

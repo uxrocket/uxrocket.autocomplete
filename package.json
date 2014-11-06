@@ -1,0 +1,28 @@
+{
+  "name": "uxrocket.autocomplete",
+  "version": "1.1.2",
+  "description": "UX Rocket Autocomplete: A jQueryUI autocomplete wrapper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uxrocket/uxrocket.autocomplete.git"
+  },
+  "dependencies": {
+	"jquery": "latest",
+	"handlebars": "latest",
+	"jqueryui": "latest",
+	"uxrocket.clear": "latest"
+  },
+  "keywords": [
+    "jQuery",
+    "javascript",
+    "jQuery UI",
+	"autocomplete",
+	"uxrocket"
+  ],
+  "author": "Bilal Cinarli <bcinarli@gmail.com> (http://bcinarli.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uxrocket/uxrocket.autocomplete/issues"
+  },
+  "homepage": "https://github.com/uxrocket/uxrocket.autocomplete"
+}
