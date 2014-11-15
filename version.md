@@ -1,3 +1,12 @@
+## Versiyon 1.2.2
+- FIX: jQuery 2 ile jQueryUI'ın `uiAutocomplete` data isminin `ui-autocomplete` olarak gelmeye başlaması nedeniyle bozulan kontrol metodu düzeltildi.
+
+## Versiyon 1.2.1
+- FIX: Class kontrolleri yüzünden, eklenecek eleman inputun kendisi mi yoksa değil mi kontrolü eklendi.
+
+## Versiyon 1.2.0
+- DEĞİŞİKLİK: Diğer pluginler ile uyumlu olması için `uxitd-autocomplete-holder` class ismi `uxitd-autocomplete-wrap` olarak değiştirildi.
+
 ## Versiyon 1.1.2
 - DEĞİŞİKLİK: Input'un bütün CSS classları uxitd-plugin-wrap'a da eklenecek şekilde değiştirildi.
 - DEĞİŞİKLİK: `.uxitd-autocomplete-holder` içinden `width: 100%;` tanımı kaldırıldı.
