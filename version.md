@@ -1,3 +1,6 @@
+## Versiyon 1.2.3
+- FIX: Klavye ile autocomplete önerilerinde hareket ederken highlight görünümü eklendi.
+
 ## Versiyon 1.2.2
 - FIX: jQuery 2 ile jQueryUI'ın `uiAutocomplete` data isminin `ui-autocomplete` olarak gelmeye başlaması nedeniyle bozulan kontrol metodu düzeltildi.
 

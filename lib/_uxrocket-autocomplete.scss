@@ -1,5 +1,5 @@
 /* @author Bilal Cinarli */
-$autocomplete-version: 0.5;
+$autocomplete-version: 1.2.3;
 
 /** -------------------------------------------
  	Auto Complete Styles
@@ -8,7 +8,7 @@ $autocomplete-version: 0.5;
 
 }
 
-.uxitd-autocomplete-holder {
+.uxitd-autocomplete-wrap {
 	position: relative;
 	display: inline-block;
 
@@ -48,62 +48,73 @@ $autocomplete-version: 0.5;
 	&:after,
 	&:before { left: 25px; }
 
-	.ui-menu-item {
+    .ui-menu-item {
         display: block;
         float: none;
         margin-top: 0;
-		border-top: 1px solid #eee;
+        border-top: 1px solid #eee;
 
-		&:first-child {
-			border-top: none
-		}
+        &:first-child {
+            border-top: none
+        }
 
-		a {
+        a {
             margin: 0;
-			padding: 10px 5px;
-			border-radius: 1px;
-			color: #999;
-			cursor: pointer;
-			overflow: hidden;
+            padding: 10px 5px;
+            border-radius: 1px;
+            color: #999;
+            cursor: pointer;
+            overflow: hidden;
 
-			&:hover {
-				background: #37ade0;
-				color: #fff;
+            &:hover {
+                background: #37ade0;
+                color: #fff;
 
-				.matched {
-					color: #fff;
-				}
-			}
+                .matched {
+                    color: #fff;
+                }
+            }
 
-			&.ui-state-focus,
-			&.ui-state-active {
-				margin: 0;
-			}
+            &.ui-state-focus,
+            &.ui-state-active {
+                margin: 0;
+            }
 
-			.matched {
-				color: #37ade0;
-				font-weight: bold;
-			}
-		}
+            .matched {
+                color: #37ade0;
+                font-weight: bold;
+            }
+        }
+    }
 
-		.item-image {
-			$img-size: 24px;
+    .ui-state-focus {
+        a {
+            background: #37ade0;
+            color: #fff;
 
-			display: inline-block;
-            width: $img-size;
-            height: $img-size;
-			margin-right: 8px;
-			overflow: hidden;
-			vertical-align: middle;
+            .matched {
+                color: #fff;
+            }
+        }
+    }
 
-			img {
-				max-width: $img-size;
-				max-height: $img-size;
-			}
-		}
-	}
+    .item-image {
+        $img-size: 24px;
 
-	&.uxitd-category{
+        display: inline-block;
+        width: $img-size;
+        height: $img-size;
+        margin-right: 8px;
+        overflow: hidden;
+        vertical-align: middle;
+
+        img {
+            max-width: $img-size;
+            max-height: $img-size;
+        }
+    }
+
+    &.uxitd-category{
         min-width: 200px;
         padding-left: 150px;
         max-height: 250px;
