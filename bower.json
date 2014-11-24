@@ -9,8 +9,9 @@
   "main": "lib/uxrocket.autocomplete.js",
   "dependencies": {
     "jquery": ">=1.11.1",
+	"uxrocket.jqueryui-lite": "latest",
 	"handlebars": ">=2.0.0",
-	"jqueryui": "latest",
+	"uxrocket.handlebars": "latest",
 	"uxrocket.clear": "latest"
   },
   "keywords": [
