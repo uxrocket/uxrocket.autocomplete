@@ -8,8 +8,9 @@
   },
   "dependencies": {
 	"jquery": "latest",
+	"uxrocket.jqueryui-lite": "latest",
 	"handlebars": "latest",
-	"jqueryui": "latest",
+	"uxrocket.handlebars": "latest",
 	"uxrocket.clear": "latest"
   },
   "keywords": [
