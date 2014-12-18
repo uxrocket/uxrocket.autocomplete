@@ -1,3 +1,6 @@
+## Versiyon 1.3.0
+- DEĞİŞİKLİK: Input elemanından wrapper üzerine class isimleri aktarılırken, "uxitd-autocomplete-ready" ve selector classı kaldırılmaya başlandı. 
+
 ## Versiyon 1.2.3
 - FIX: Klavye ile autocomplete önerilerinde hareket ederken highlight görünümü eklendi.
 
