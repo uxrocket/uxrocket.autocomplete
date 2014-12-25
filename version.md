@@ -1,3 +1,6 @@
+## Versiyon 1.4.0
+- YENİ: Öneri listesinde oklarla hareket edilip enterla seçim yapıldığında url yönlendirme seçeneği eklendi.
+
 ## Versiyon 1.3.0
 - DEĞİŞİKLİK: Input elemanından wrapper üzerine class isimleri aktarılırken, "uxitd-autocomplete-ready" ve selector classı kaldırılmaya başlandı. 
 
