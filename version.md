@@ -1,3 +1,6 @@
+## Versiyon 1.4.2
+- FIX: setSource fonksiyonun tanımlanma şeklinden dolayı IE'de sayfa yüklemelerinde otomatik açılma problemi giderildi.
+
 ## Versiyon 1.4.1
 - YENİ: Öneri listesinde oklarla hareket sırasında, fieldın güncellenip/güncellemeyeceği ile alakalı `arrowNavigation` kontrolü eklendi
 
