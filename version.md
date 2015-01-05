@@ -1,3 +1,6 @@
+## Versiyon 1.4.1
+- YENİ: Öneri listesinde oklarla hareket sırasında, fieldın güncellenip/güncellemeyeceği ile alakalı `arrowNavigation` kontrolü eklendi
+
 ## Versiyon 1.4.0
 - YENİ: Öneri listesinde oklarla hareket edilip enterla seçim yapıldığında url yönlendirme seçeneği eklendi.
 
