@@ -1,3 +1,6 @@
+## Versiyon 1.4.4
+- FIX: Seçim sırasında URL metodunun birden fazla çalışması düzeltildi.
+
 ## Versiyon 1.4.3
 - FIX: arrowSelection sırasında `target` kontrolü düzeltildi.
 
