@@ -1,3 +1,6 @@
+## Versiyon 1.4.3
+- FIX: arrowSelection sırasında `target` kontrolü düzeltildi.
+
 ## Versiyon 1.4.2
 - FIX: setSource fonksiyonun tanımlanma şeklinden dolayı IE'de sayfa yüklemelerinde otomatik açılma problemi giderildi.
 
