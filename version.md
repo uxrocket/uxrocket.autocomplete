@@ -1,3 +1,6 @@
+## Version 1.4.5
+- DEĞİŞİKLİK: Selector optimizasyon
+
 ## Versiyon 1.4.4
 - FIX: Seçim sırasında URL metodunun birden fazla çalışması düzeltildi.
 
