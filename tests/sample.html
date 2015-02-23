@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+	<head>
+		<title>UX Rocket Autocomplete Sample</title>
+		<meta charset="utf-8" />
+		
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="../bower_components/uxrocket.jqueryui-lite/lib/uxrocket.jqueryui.js"></script>
+		<script src="../bower_components/handlebars/handlebars.js"></script>
+		<script src="../bower_components/uxrocket.handlebars/lib/uxrocket.handlebars.js"></script>
+		<script src="../bower_components/uxrocket.clear/lib/uxrocket.clear.js"></script>
+		<script src="../lib/uxrocket.autocomplete.js"></script>
+		<script>
+			$(function(){
+				$(".autocomplete").uxitdautocomplete({
+                    service: './autocomplete.php'
+                });
+			});
+		</script>
+
+        <link href="styles/_uxrocket-jqueryui.css" rel="stylesheet">
+				
+		<style>
+			*, *:before, *:after { box-sizing: border-box }
+			body { margin: 0; padding: 0; font: 16px/1.4 "Gill Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+			.content { padding: 5em; }
+
+			.uxitd-plugin-wrap {
+				width: 350px;
+			}
+
+			.autocomplete:not(.uxitd-plugin-wrap) {
+				width: 350px;
+				font-size: 1rem;
+				padding: 5px;
+			}
+
+			.hide {
+				display: none;
+			}
+
+            /** Autocomplete Styles **/
+            .uxitd-autocomplete-wrap {
+                position: relative;
+                display: inline-block;
+            }
+            .uxitd-autocomplete-wrap .icon-search {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 25px;
+                height: 32px;
+                color: #37ade0;
+            }
+            .uxitd-autocomplete-wrap .icon-search:before {
+                content: "⚲";
+                position: absolute;
+                top: 50%;
+                right: -15px;
+                font-size: 24px;
+                transform: rotate(-60deg) translateY(-90%);
+            }
+            .uxitd-autocomplete-wrap .uxitd-autocomplete-ready {
+                width: 100%;
+            }
+
+            .uxitd-autocomplete-icon-clickable {
+                cursor: pointer;
+            }
+
+            .ui-menu {
+                padding: 0;
+                border: 1px solid #555;
+                background: #fff;
+                box-sizing: content-box;
+            }
+            .ui-menu:after, .ui-menu:before {
+                left: 25px;
+            }
+            .ui-menu .ui-menu-item {
+                display: block;
+                float: none;
+                margin-top: 0;
+                border-top: 1px solid #eee;
+            }
+            .ui-menu .ui-menu-item:first-child {
+                border-top: none;
+            }
+            .ui-menu .ui-menu-item a {
+                margin: 0;
+                padding: 10px 5px;
+                border-radius: 1px;
+                color: #999;
+                cursor: pointer;
+                overflow: hidden;
+            }
+            .ui-menu .ui-menu-item a:hover {
+                background: #37ade0;
+                color: #fff;
+            }
+            .ui-menu .ui-menu-item a:hover .matched {
+                color: #fff;
+            }
+            .ui-menu .ui-menu-item a.ui-state-focus, .ui-menu .ui-menu-item a.ui-state-active {
+                margin: 0;
+            }
+            .ui-menu .ui-menu-item a .matched {
+                color: #37ade0;
+                font-weight: bold;
+            }
+            .ui-menu .ui-state-focus a {
+                background: #37ade0;
+                color: #fff;
+            }
+            .ui-menu .ui-state-focus a .matched {
+                color: #fff;
+            }
+            .ui-menu .item-image {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                margin-right: 8px;
+                overflow: hidden;
+                vertical-align: middle;
+            }
+            .ui-menu .item-image img {
+                max-width: 24px;
+                max-height: 24px;
+            }
+            .ui-menu.uxitd-category {
+                min-width: 200px;
+                padding-left: 150px;
+                max-height: 250px;
+                overflow: auto;
+            }
+            .ui-menu.uxitd-category .ui-menu-item {
+                border-left: 1px solid #ccc;
+            }
+            .ui-menu.uxitd-category .ui-menu-item a {
+                border-left: 1px solid #e5e5e5;
+            }
+            .ui-menu .uxitd-autocomplete-category {
+                position: absolute;
+                left: 0;
+                padding: 10px;
+                font-weight: bold;
+                width: 150px;
+                margin-top: -1px;
+            }
+
+            .ui-autocomplete {
+                max-height: 250px;
+                overflow: auto;
+            }
+
+            .ui-menu-item em {
+                margin-left: 32px;
+                font-size: 11px;
+            }
+
+
+            /** Clear styles **/
+			.uxitd-clear-wrap {
+				position: relative;
+				display: inline-block;
+			}
+
+			.uxitd-clear-ready {
+				width: 100%;
+				padding-right: 25px;
+			}
+
+			.uxitd-clear-icon {
+				position: absolute;
+				top: 0;
+				right: 35px;
+				width: 20px;
+				height: 32px;
+				font-size: 1rem;
+				color: #000;
+                cursor: pointer;
+			}
+
+			.uxitd-clear-icon:before {
+				position: absolute;
+				top: 50%;
+				right: 0;
+				transform: translateY(-50%);
+				content: "X";
+			}
+
+		</style>
+	</head>
+	
+	<body>
+		<div class="content">
+			<div class="example">
+                <p>Please type a programing language like 'ActionScript', 'AppleScript', 'Asp', 'Basic', 'C', 'C++', 'Clojure', 'Cobol', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'Java', 'JavaScript', 'List', 'Perl', 'PHP', 'Ruby', 'Python', 'Scala', 'Scheme'</p>
+
+				<p class="wrap">
+					<input type="text" class="autocomplete" placeholder="Classic view" />
+				</p>
+
+				<p class="wrap">
+					<input type="text" class="autocomplete" placeholder="With images" data-type="image" />
+				</p>
+
+                <p class="wrap">
+                    <input type="text" class="autocomplete" placeholder="With category" data-type="category" />
+                </p>
+
+                <p class="wrap">
+                    <input type="text" class="autocomplete" placeholder="With tree (both images and category)" data-type="tree" />
+                </p>
+			</div>
+		</div>
+	</body>
+</html>
