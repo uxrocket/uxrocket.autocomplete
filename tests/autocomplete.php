@@ -50,6 +50,7 @@ foreach($autocomplete as $item) {
 	}
 }
 
+sleep(2);
 
 header('Content-Type: application/json');
 
