@@ -29,10 +29,47 @@ $autocomplete-version: 1.4.6;
         }
 	}
 
+    .icon-loading {
+        top: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: dashed 2px #37ade0;
+        -webkit-animation: loading 2s infinite linear;
+        -moz-animation: loading 2s infinite linear;
+        -o-animation: loading 2s infinite linear;
+        animation: loading 2s infinite linear;
+
+        &:before {
+            content: '';
+        }
+    }
+
 	[class*="-column"],
     .uxitd-autocomplete-ready {
 		width: 100%;
 	}
+}
+
+@-webkit-keyframes loading{
+    from   {  transform: rotate(0deg); }
+    to     {  transform: rotate(360deg); }
+}
+
+@-moz-keyframes loading{
+    from   {  transform: rotate(0deg); }
+    to     {  transform: rotate(360deg); }
+}
+
+@-o-keyframes loading{
+    from   {  transform: rotate(0deg); }
+    to     {  transform: rotate(360deg); }
+}
+
+@keyframes loading{
+    from   {  transform: rotate(0deg); }
+    to     {  transform: rotate(360deg); }
 }
 
 .uxitd-autocomplete-icon-clickable {
