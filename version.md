@@ -1,3 +1,10 @@
+## Versiyon 1.5.0
+- YENİ: Autocomplete `autocompletesearch` ve `autocompleteresponse` eventleri için indikatör eklendi.
+- YENİ: Plugin bindinglerini kaldırmak için `$.uxautocomplete.remove(el)` metodu eklendi.
+- YENİ: uxRocket data kayıtları eklendi.
+- DEĞİŞİKLİK: Statik olarak eklenmiş id/class isimleri parametrik hale getirildi.
+- DEĞİŞİKLİK: Plugin eventleri `.uxAutocomplete` namespacei içine eklendi.
+
 ## Versiyon 1.4.6
 - FIX: Tanımlamalardaki typo hataları düzeltildi.
 
