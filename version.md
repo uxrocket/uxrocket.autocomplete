@@ -2,6 +2,7 @@
 - YENİ: Autocomplete `autocompletesearch` ve `autocompleteresponse` eventleri için indikatör eklendi.
 - YENİ: Plugin bindinglerini kaldırmak için `$.uxautocomplete.remove(el)` metodu eklendi.
 - YENİ: uxRocket data kayıtları eklendi.
+- YENİ: uxClear bağımlılığı kaldırıldı.
 - DEĞİŞİKLİK: Statik olarak eklenmiş id/class isimleri parametrik hale getirildi.
 - DEĞİŞİKLİK: Plugin eventleri `.uxAutocomplete` namespacei içine eklendi.
 

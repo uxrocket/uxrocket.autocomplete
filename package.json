@@ -10,8 +10,7 @@
 	"jquery": "latest",
 	"uxrocket.jqueryui-lite": "latest",
 	"handlebars": "latest",
-	"uxrocket.handlebars": "latest",
-	"uxrocket.clear": "latest"
+	"uxrocket.handlebars": "latest"
   },
   "keywords": [
     "jQuery",
