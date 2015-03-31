@@ -9,7 +9,7 @@
 		<script src="../bower_components/handlebars/handlebars.js"></script>
 		<script src="../bower_components/uxrocket.handlebars/lib/uxrocket.handlebars.js"></script>
 		<script src="../bower_components/uxrocket.clear/lib/uxrocket.clear.js"></script>
-		<script src="../lib/uxrocket.autocomplete.js"></script>
+		<script src="../dist/uxrocket.autocomplete.min.js"></script>
 		<script>
 			$(function(){
 				$(".autocomplete").uxitdautocomplete({
@@ -18,7 +18,8 @@
 			});
 		</script>
 
-        <link href="styles/_uxrocket-jqueryui.css" rel="stylesheet">
+        <link href="styles/_uxrocket-jqueryui.css" rel="stylesheet" />
+        <link href="../dist/uxrocket-autocomplete.css" rel="stylesheet" />
 				
 		<style>
 			*, *:before, *:after { box-sizing: border-box }
@@ -40,147 +41,18 @@
 			}
 
             /** Autocomplete Styles **/
-            .uxitd-autocomplete-wrap {
-                position: relative;
-                display: inline-block;
-            }
-            .uxitd-autocomplete-wrap .icon-search {
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 25px;
-                height: 32px;
-                color: #37ade0;
-            }
             .uxitd-autocomplete-wrap .icon-search:before {
                 content: "⚲";
                 position: absolute;
-                top: 50%;
+                top: 25px;
                 right: -15px;
                 font-size: 24px;
                 transform: rotate(-60deg) translateY(-90%);
             }
 
-            .uxitd-autocomplete-wrap .icon-loading {
-                top: 5px;
-                right: 5px;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                border: dashed 2px #37ade0;
-                -webkit-animation-name: loading;
-                -webkit-animation-duration: 2s;
-                -webkit-animation-iteration-count: infinite;
-                -webkit-animation-timing-function: linear;
-            }
-
             .uxitd-autocomplete-wrap .icon-loading:before {
                 content: '';
             }
-
-            @-webkit-keyframes loading {
-                from   {  transform: rotate(0deg); }
-                to     {  transform: rotate(360deg); }
-            }
-
-            .uxitd-autocomplete-wrap .uxitd-autocomplete-ready {
-                width: 100%;
-            }
-
-            .uxitd-autocomplete-icon-clickable {
-                cursor: pointer;
-            }
-
-            .ui-menu {
-                padding: 0;
-                border: 1px solid #555;
-                background: #fff;
-                box-sizing: content-box;
-            }
-            .ui-menu:after, .ui-menu:before {
-                left: 25px;
-            }
-            .ui-menu .ui-menu-item {
-                display: block;
-                float: none;
-                margin-top: 0;
-                border-top: 1px solid #eee;
-            }
-            .ui-menu .ui-menu-item:first-child {
-                border-top: none;
-            }
-            .ui-menu .ui-menu-item a {
-                margin: 0;
-                padding: 10px 5px;
-                border-radius: 1px;
-                color: #999;
-                cursor: pointer;
-                overflow: hidden;
-            }
-            .ui-menu .ui-menu-item a:hover {
-                background: #37ade0;
-                color: #fff;
-            }
-            .ui-menu .ui-menu-item a:hover .matched {
-                color: #fff;
-            }
-            .ui-menu .ui-menu-item a.ui-state-focus, .ui-menu .ui-menu-item a.ui-state-active {
-                margin: 0;
-            }
-            .ui-menu .ui-menu-item a .matched {
-                color: #37ade0;
-                font-weight: bold;
-            }
-            .ui-menu .ui-state-focus a {
-                background: #37ade0;
-                color: #fff;
-            }
-            .ui-menu .ui-state-focus a .matched {
-                color: #fff;
-            }
-            .ui-menu .item-image {
-                display: inline-block;
-                width: 24px;
-                height: 24px;
-                margin-right: 8px;
-                overflow: hidden;
-                vertical-align: middle;
-            }
-            .ui-menu .item-image img {
-                max-width: 24px;
-                max-height: 24px;
-            }
-            .ui-menu.uxitd-category {
-                min-width: 200px;
-                padding-left: 150px;
-                max-height: 250px;
-                overflow: auto;
-            }
-            .ui-menu.uxitd-category .ui-menu-item {
-                border-left: 1px solid #ccc;
-            }
-            .ui-menu.uxitd-category .ui-menu-item a {
-                border-left: 1px solid #e5e5e5;
-            }
-            .ui-menu .uxitd-autocomplete-category {
-                position: absolute;
-                left: 0;
-                padding: 10px;
-                font-weight: bold;
-                width: 150px;
-                margin-top: -1px;
-            }
-
-            .ui-autocomplete {
-                max-height: 250px;
-                overflow: auto;
-            }
-
-            .ui-menu-item em {
-                margin-left: 32px;
-                font-size: 11px;
-            }
-
 
             /** Clear styles **/
 			.uxitd-clear-wrap {
