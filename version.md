@@ -1,3 +1,8 @@
+## Versiyon 1.6.0
+- YENİ: Ajax autocomplete işlemleri için `cache` opsiyonu eklendi. Arama yapılırken, bulunanan sonuçlar data olarak saklanıp, sorgu tekrar yapıldığında saklanan data gösterilebilir.
+- YENİ: `$.uxautocomplete.clearCache(el)` metodu eklendi.
+- YENİ: `onClearCache` callbacki eklendi.
+
 ## Versiyon 1.5.0
 - YENİ: Autocomplete `autocompletesearch` ve `autocompleteresponse` eventleri için indikatör eklendi.
 - YENİ: Plugin bindinglerini kaldırmak için `$.uxautocomplete.remove(el)` metodu eklendi.

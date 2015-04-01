@@ -76,6 +76,9 @@ characterTextLimit   | 20                   | Kategori'li tipi kullanıyorsanız
 hidden               | null                 | Listeden seçim yapıldığında, seçimin idsi farklı bir alana eklenecekse, liste ile ilgili alanı css id ya da css classına göre ilişkilendirir.
 template             | null                 | Listenin görünümü ön tanımlı varyasyonlar dışında olacaksa, yeni görünüm için kullanılacak __Handlebars__ template objesidir.
 highlight            | true                 | Listelerde match eden karakterlere highlight özelliğini ekler.
+arrowSelection       | false                | Listelerde ok tuşları ile hareket ettikten sonra `enter` tuşuna basarak sonucun seçilip seçilmeyeceğini belirtir.
+arrowNavigation      | true                 | Listelerde ok tuşları ile hareket ederken satırın highlight olup olmayacağını belirtir.
+cache                | false                | Ajax sorgusu yapılan aramalarda sonuçların ön belleğe kaydedilip kaydedilmeyeceğiniz belirtir.
 
 
 Data Attribute			   | &nbsp;
@@ -91,6 +94,9 @@ hidden                     | Listeden seçim yapıldığında, seçimin idsi far
 character-text-limit       | Kategori'li tipi kullanıyorsanız, kategori text'inin kısaltmaya yöneliktir.
 template                   | Listenin görünümü ön tanımlı varyasyonlar dışında olacaksa, yeni görünüm için kullanılacak __Handlebars__ template objesidir.
 highlight                  | Listelerde match eden karakterlere highlight özelliğini ekler.
+arrow-selection            | Listelerde ok tuşları ile hareket ettikten sonra `enter` tuşuna basarak sonucun seçilip seçilmeyeceğini belirtir.
+arrow-navigation           | Listelerde ok tuşları ile hareket ederken satırın highlight olup olmayacağını belirtir.
+cache                      | Ajax sorgusu yapılan aramalarda sonuçların ön belleğe kaydedilip kaydedilmeyeceğiniz belirtir.
 
 
 Callback			 | &nbsp;
@@ -98,6 +104,8 @@ Callback			 | &nbsp;
 onReady              | Autocomplete, form elemanına bağlandığında çalışacak fonksiyonu çağırır.
 onSelect             | Listeden seçim yapıldığında, çalışacak fonksiyonu çağırır.
 onButtonClick        | Metin alanının yanındaki büyüteç ikonuna tıklandığında çalışacak fonksiyonu çağırır.
+onClearCache         | Elemana eklenmiş ajax arama sonuçları ön belleği silindiğinde çalışacak fonksiyonu çağırır.
+onRemove             | Eleman üzerinden Autocomplete kaldırıldığında çalışacak fonksiyonu çağırır.
 
 
 ### Public Metodlar
@@ -107,3 +115,5 @@ $(selector).uxitdautocomplete(options) | Bu method plugini manuel olarak bir ele
 $.uxautocomplete                       | Bu method pluginin detayını görmenizi sağlar
 $.uxautocomplete.version               | Sayfaya eklenmiş pluginin versiyon numarasını gösterir.
 $.uxautocomplete.settings              | Aktif pluginin ayarlarını gösterir.
+$.uxautocomplete.clearCache(el)        | Belirtilen elemanın ön belleğini siler. `el` değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarındaki ön belleği siler.
+$.uxautocomplete.remove(el)            | Elemanın üzerinden Autocomplete özelliğini kaldırır. el` değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarındaki bu özelliği kaldırır.
