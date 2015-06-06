@@ -116,4 +116,4 @@ $.uxautocomplete                       | Bu method pluginin detayını görmeniz
 $.uxautocomplete.version               | Sayfaya eklenmiş pluginin versiyon numarasını gösterir.
 $.uxautocomplete.settings              | Aktif pluginin ayarlarını gösterir.
 $.uxautocomplete.clearCache(el)        | Belirtilen elemanın ön belleğini siler. `el` değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarındaki ön belleği siler.
-$.uxautocomplete.remove(el)            | Elemanın üzerinden Autocomplete özelliğini kaldırır. el` değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarındaki bu özelliği kaldırır.
+$.uxautocomplete.remove(el)            | Elemanın üzerinden Autocomplete özelliğini kaldırır. `el` değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarındaki bu özelliği kaldırır.
