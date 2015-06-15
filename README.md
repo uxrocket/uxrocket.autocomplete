@@ -105,6 +105,7 @@ onReady              | Autocomplete, form elemanına bağlandığında çalışa
 onSelect             | Listeden seçim yapıldığında, çalışacak fonksiyonu çağırır.
 onButtonClick        | Metin alanının yanındaki büyüteç ikonuna tıklandığında çalışacak fonksiyonu çağırır.
 onClearCache         | Elemana eklenmiş ajax arama sonuçları ön belleği silindiğinde çalışacak fonksiyonu çağırır.
+onUpdate             | Elemana eklenmiş Autocomplete tanımları güncellendikten sonra çalışacak fonksiyonu çağırır.
 onRemove             | Eleman üzerinden Autocomplete kaldırıldığında çalışacak fonksiyonu çağırır.
 
 
@@ -116,4 +117,5 @@ $.uxautocomplete                       | Bu method pluginin detayını görmeniz
 $.uxautocomplete.version               | Sayfaya eklenmiş pluginin versiyon numarasını gösterir.
 $.uxautocomplete.settings              | Aktif pluginin ayarlarını gösterir.
 $.uxautocomplete.clearCache(el)        | Belirtilen elemanın ön belleğini siler. `el` değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarındaki ön belleği siler.
+$.uxautocomplete.update(el)            | Elemana eklenmiş tanımlar güncellendikten sonra Autocomplete özelliğinin çalışmasını yeni özelliklere göre tekrar elemana bağlar. `el` değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarını tekrar bağlar.
 $.uxautocomplete.remove(el)            | Elemanın üzerinden Autocomplete özelliğini kaldırır. `el` değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarındaki bu özelliği kaldırır.
