@@ -1,3 +1,8 @@
+## Versiyon 1.7.0
+- YENİ: Autocomplete plugin özelliklerini güncelleme eklendi.
+- YENİ: `onUpdate` callbacki eklendi.
+- DEĞİŞİKLİK: `bindActions` metod ismi diğer pluginlerdeki ortak yapıyı koruması için `bindUIActions` olarak değiştirildi.
+
 ## Versiyon 1.6.0
 - YENİ: Ajax autocomplete işlemleri için `cache` opsiyonu eklendi. Arama yapılırken, bulunanan sonuçlar data olarak saklanıp, sorgu tekrar yapıldığında saklanan data gösterilebilir.
 - YENİ: `$.uxautocomplete.clearCache(el)` metodu eklendi.
