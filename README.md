@@ -73,7 +73,7 @@ Seçim yapıldıktan sonra, metin alanına eklenecek metin, data içindeki __`va
 Property			 | Default			    | Açıklama
 -------------------- | -------------------- | --------
 type                 | list                 | Autocomplete seçeneklerinin çıkacağı liste görünümünü belirler. "list", "image", "category" ve "tree" değerlerini alabilir.
-service              | null                 | Metin alanında yapılan sorgunun yapılıp sonuçların alınacağı data setidir. Ajax sorgusu yapılacak bir __Servis URL__'i ya da sayfa içerisindeki bir __JSON Objesi__ olabilir.
+service              | null                 | Metin alanında yapılan sorgunun yapılıp sonuçların alınacağı data setidir. Ajax sorgusu yapılacak bir __Servis URL__'i, sayfa içerisindeki bir __JSON Objesi__ ya da elemana _data_ olarak eklenmiş bir __Javascript Array__ 'i olabilir.
 item                 | 10                   | Listede çıkacak maksimum seçenek sayısını belirler.
 minLength            | 2                    | En az kaç karakterden sonra listenin görünür olacağını belirler.
 formdata             | null                 | Servis Ajax ile çağrılacağında, ihtiyaç halinde `serialize()` edilerek gönderilecek formun seçicisini belirler
