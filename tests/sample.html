@@ -9,13 +9,19 @@
 		<script src="../bower_components/handlebars/handlebars.js"></script>
 		<script src="../bower_components/uxrocket.handlebars/lib/uxrocket.handlebars.js"></script>
 		<script src="../bower_components/uxrocket.clear/lib/uxrocket.clear.js"></script>
-		<script src="../dist/uxrocket.autocomplete.min.js"></script>
+		<script src="../lib/uxrocket.autocomplete.js"></script>
 		<script>
 			$(function(){
+				$("#ds").data('service', [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]);
+
 				$(".autocomplete").uxitdautocomplete({
                     service: './autocomplete.php'
                 });
 			});
+		</script>
+
+		<script>
+			var dataSource = {"itemList":[{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]}
 		</script>
 
         <link href="styles/_uxrocket-jqueryui.css" rel="stylesheet" />
@@ -107,6 +113,14 @@
                 <p class="wrap">
                     <input type="text" class="autocomplete" placeholder="With tree (both images and category)" data-type="tree" />
                 </p>
+
+				<p class="wrap">
+					<input type="text" class="autocomplete" id="ds" placeholder="Classic view with dynamic source" />
+				</p>
+
+				<p class="wrap">
+					<input type="text" class="autocomplete" id="inline" placeholder="Classic view with inline data source" data-service="dataSource" />
+				</p>
 			</div>
 		</div>
 	</body>
