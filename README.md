@@ -50,6 +50,12 @@ var customList = {
                  }
 ```
 
+### Veri Listesi Servis tanımı
+Arama sonuçlarında çıkacak listeler için 3 farklı şekilde servis tanımı yapılabilir. Bu tanımların hepsi `service` tanım değerine göre kontrol edilmektedir. Binding sırasında verilen `service` değeri ya da elemana atanacak `data-service` değeri şu durumlarda çalışır
+* URL pattern yapısında bir string (http(s)://, /, ./ ya da ../) ise, ilgili urlye ajax sorgusu yapılır
+* `[{name: "", value: ""}]` yapısında bir `$(element).data('service', [])` data değeri ise doğrudan bu array içerisinde arama yapılır
+* Elemana `data-service="myItemList"` eklenmi bir data attribute ile, sayfa içerisinde tanımlanmış yukarıda belirtilen örnek _json_ yapısında `myItemList` isimli bir değişken aranıp, bulunduğunda, değeri içerisinde arama yapılır.
+
 ### Notlar
 Metin girişi sırası çıkan listede `data-type` değerine göre farklı görünümler oluşturulabilir. Ön tanımlı temalara göre `data-type` değerleri aşağıdaki gibi olabilir;
 

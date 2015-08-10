@@ -1,3 +1,6 @@
+## Versiyon 1.8.0
+- YENİ: Autocomplete yapılacak veri listesi için `data` şeklinde Javascript arrayi eklenebilir hale getirildi. `$(element).data('service', [array değeri])` şeklinde veri listesi ataması yapılabilir.
+
 ## Versiyon 1.7.0
 - YENİ: Autocomplete plugin özelliklerini güncelleme eklendi.
 - YENİ: `onUpdate` callbacki eklendi.
