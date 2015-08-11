@@ -21,7 +21,9 @@
 		</script>
 
 		<script>
-			var dataSource = {"itemList":[{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]}
+			var dataSource = [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}];
+
+			var oldVersionDataSource = { "itemList": [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]};
 		</script>
 
         <link href="styles/_uxrocket-jqueryui.css" rel="stylesheet" />
@@ -120,6 +122,8 @@
 
 				<p class="wrap">
 					<input type="text" class="autocomplete" id="inline" placeholder="Classic view with inline data source" data-service="dataSource" />
+				<p class="wrap">
+					<input type="text" class="autocomplete" id="inline-old" placeholder="Classic view with inline old data source" data-service="oldVersionDataSource" />
 				</p>
 			</div>
 		</div>
