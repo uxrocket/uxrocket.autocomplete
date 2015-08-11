@@ -10,29 +10,45 @@ Autocomplete plugini, jQueryUI Autocomplete altyapısı kullanılarak geliştiri
 <input type="text" class="auto-complete" data-service="dataSource" />
 ```
 
+Arama yapılmaya başlandığında açılacak öneri listesi için en küçük JSON formatı
+
 ```JSON
-{
-    "itemList":[
-        {
-            "category":"A",
-            "image":"image-01.jpg",
-            "name":"Asp",
-            "value": "A, Asp",
-            "title": "Web Language",
-            "id":"03",
-            "url": "http://www.example.com"
-        },
-        {
-            "category":"B",
-            "image":"image-02.jpg",
-            "name":"Basic",
-            "value":"B, Basic",
-            "title": "Desktop Language",
-            "id":"04",
-            "url": "http://www.sample.com"
-        }
-    ]
-}
+[
+    {
+        "name":"Asp",
+        "id:"01"
+    },
+    {
+        "name":"Basic",
+        "id:"02"
+    }
+]
+```
+
+Tree görünüm türü için gelişmiş JSON formatı
+
+```JSON
+[
+    {
+        "category":"A",
+        "image":"image-01.jpg",
+        "name":"Asp",
+        "value": "A, Asp",
+        "title": "Web Language",
+        "id":"03",
+        "url": "http://www.example.com"
+    },
+    {
+        "category":"B",
+        "image":"image-02.jpg",
+        "name":"Basic",
+        "value":"B, Basic",
+        "title": "Desktop Language",
+        "id":"04",
+        "url": "http://www.sample.com"
+    }
+]
+
 ```
 
 ### Örnek HandleBars Teması
