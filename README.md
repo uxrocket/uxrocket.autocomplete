@@ -16,11 +16,11 @@ Arama yapılmaya başlandığında açılacak öneri listesi için en küçük J
 [
     {
         "name":"Asp",
-        "id:"01"
+        "id":"01"
     },
     {
         "name":"Basic",
-        "id:"02"
+        "id":"02"
     }
 ]
 ```
