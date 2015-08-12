@@ -17,6 +17,12 @@
 				$(".autocomplete").uxitdautocomplete({
                     service: './autocomplete.php'
                 });
+
+				$("._autocomplete").uxitdautocomplete({
+					service: function(request, response){
+						return myfunction(request, response);
+					}
+				});
 			});
 		</script>
 
@@ -24,6 +30,16 @@
 			var dataSource = [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}];
 
 			var oldVersionDataSource = { "itemList": [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]};
+
+            // sample for as
+            var sample = [{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Haskell","id":13,"category":"H"},{"name":"JavaScript","id":15,"category":"J"}];
+
+			var myfunction = function(request, response){
+				$("#function-callback").data('uxAutocomplete')["terms"]["as"] = sample;
+				$("#function-callback").data('uxAutocomplete')["response"] = response;
+
+                $("#function-callback").trigger('changeData');
+			}
 		</script>
 
         <link href="styles/_uxrocket-jqueryui.css" rel="stylesheet" />
@@ -38,7 +54,8 @@
 				width: 350px;
 			}
 
-			.autocomplete:not(.uxitd-plugin-wrap) {
+			.autocomplete:not(.uxitd-plugin-wrap),
+			._autocomplete:not(.uxitd-plugin-wrap){
 				width: 350px;
 				font-size: 1rem;
 				padding: 5px;
@@ -124,6 +141,9 @@
 					<input type="text" class="autocomplete" id="inline" placeholder="Classic view with inline data source" data-service="dataSource" />
 				<p class="wrap">
 					<input type="text" class="autocomplete" id="inline-old" placeholder="Classic view with inline old data source" data-service="oldVersionDataSource" />
+				</p>
+				<p class="wrap">
+					<input type="text" class="_autocomplete" id="function-callback" placeholder="Classic view with service function" />
 				</p>
 			</div>
 		</div>
