@@ -1,6 +1,6 @@
 UX Rocket Autocomplete
 =====================
-Autocomplete plugini, jQueryUI Autocomplete altyapısı kullanılarak geliştirilmiştir. Orjinal plugindeki özelliklerin tamamı kullanılabilir. Ayrıca, autocomplete olarak çalışacak alanlarda `data` tanımları ile de ayarlar değiştirilebilir.
+Autocomplete plugini, farklı içerik formatlarını kullanarak input girişlerinde örnek liste gösterimi yapmaktadır. Ayrıca, autocomplete olarak çalışacak alanlarda `data` tanımları ile de ayarlar değiştirilebilir.
 
 ```HTML
 <input type="text" class="auto-complete" />

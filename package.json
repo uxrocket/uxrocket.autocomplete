@@ -1,6 +1,6 @@
 {
   "name": "uxrocket.autocomplete",
-  "version": "1.8.0",
+  "version": "2.0.0",
   "description": "UX Rocket Autocomplete: A jQueryUI autocomplete wrapper",
   "repository": {
     "type": "git",
@@ -8,14 +8,12 @@
   },
   "dependencies": {
 	"jquery": "latest",
-	"uxrocket.jqueryui-lite": "latest",
 	"handlebars": "latest",
 	"uxrocket.handlebars": "latest"
   },
   "keywords": [
     "jQuery",
     "javascript",
-    "jQuery UI",
 	"autocomplete",
 	"uxrocket"
   ],
