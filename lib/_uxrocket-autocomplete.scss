@@ -4,3 +4,14 @@ $autocomplete-version: 2.0.0;
 /** -------------------------------------------
  	Auto Complete Styles
     ------------------------------------------- **/
+.uxr-autocomplete {
+    &-wrap {
+        position: relative;
+        display: inline-block;
+    }
+}
+
+@keyframes uxr-autocomplete-loading{
+    from   {  transform: rotate(0deg); }
+    to     {  transform: rotate(360deg); }
+}

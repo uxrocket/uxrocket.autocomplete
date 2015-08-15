@@ -1,0 +1,30 @@
+/* @author Bilal Cinarli */
+/** -------------------------------------------
+ 	Auto Complete Styles
+    ------------------------------------------- **/
+.uxr-autocomplete-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+@-webkit-keyframes uxr-autocomplete-loading {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes uxr-autocomplete-loading {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}

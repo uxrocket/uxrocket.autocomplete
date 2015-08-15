@@ -1,0 +1,9 @@
+/*! UX Rocket Autocomplete 
+ *  UX Rocket Autocomplete: A jQueryUI autocomplete wrapper 
+ *  @author Bilal Cinarli <bcinarli@gmail.com> (http://bcinarli.com/) 
+ *  @version 2.0.0 
+ *  @build 2015-07-06 
+ */
+.uxr-autocomplete-wrap{position:relative;display:inline-block}@-webkit-keyframes uxr-autocomplete-loading{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes uxr-autocomplete-loading{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+
+/*# sourceMappingURL=uxrocket.autocomplete.min.css.map */
