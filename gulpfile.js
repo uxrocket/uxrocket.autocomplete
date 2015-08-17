@@ -19,12 +19,16 @@ var gulp = require("gulp"),
     autoprefixer = require("gulp-autoprefixer"),
 
 // lint
-    jshint = require("gulp-jshint");
+    jshint = require("gulp-jshint"),
+
+// testing
+    mochaPhantomJs = require('gulp-mocha-phantomjs');
 
 var paths = {
-    lib     : "./lib/",
-    dist    : "./dist/",
-    examples: "./examples/"
+    lib     : 'lib/',
+    dist    : 'dist/',
+    test   : 'test/',
+    examples: 'examples/'
 };
 
 var banner = [
@@ -40,6 +44,11 @@ var banner = [
 ].join('');
 
 var tasks = {
+    mocha: function() {
+        return gulp.src(paths.test + 'index.html')
+            .pipe(mochaPhantomJs());
+    },
+
     sass: function() {
         return gulp.src(paths.lib + "**/*.scss")
             .pipe(sourcemaps.init())
@@ -90,13 +99,14 @@ var now = function() {
     return d.getFullYear() + '-' + (d.getMonth() < 10 ? '0' + d.getMonth() : d.getMonth()) + '-' + (d.getDay() < 10 ? '0' + d.getDay() : d.getDay());
 };
 
-gulp.task("sass", tasks.sass);
-gulp.task("lint", tasks.lint);
-gulp.task("scripts", tasks.scripts);
+gulp.task('sass', tasks.sass);
+gulp.task('lint', tasks.lint);
+gulp.task('scripts', tasks.scripts);
+gulp.task('mocha', tasks.mocha);
 
-gulp.task("watch", ["sass", "lint", "scripts"], function() {
-    gulp.watch(paths.lib + "**/*.scss", ["sass"]);
-    gulp.watch(paths.lib + "**/*.js", ["lint", "scripts"]);
+gulp.task('watch', ['sass', 'lint', 'scripts', 'mocha'], function() {
+    gulp.watch(paths.lib + '**/*.scss', ['sass']);
+    gulp.watch(paths.lib + '**/*.js', ['lint', 'scripts', 'mocha']);
 });
 
-gulp.task("default", ["watch"]);
+gulp.task('default', ['watch']);

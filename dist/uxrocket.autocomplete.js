@@ -136,8 +136,6 @@
 
         this.bindUIActions();
         this.setTemplate();
-
-        $el.data(ns.data, this);
     };
 
     Autocomplete.prototype = {
@@ -149,7 +147,7 @@
                 this.classList = this.classList.replace(this.options.selector.substr(1), '');
             }
 
-            this.classList += ' ' + ns.wrap + ' ' + utils.getClassname('wrap');
+            this.classList += ns.wrap + ' ' + utils.getClassname('wrap');
             this.classList = $.trim(this.classList);
         },
 
@@ -193,8 +191,6 @@
         },
 
         onKeyup: function(e) {
-            var _this = this;
-
             console.log(e);
 
             if(e.keyCode === keys.return) {
@@ -235,8 +231,7 @@
         return this.each(function() {
             var $el = $(this),
                 uxrocket = $el.data(ns.rocket) || {},
-                _opts = $.extend(true, {}, defaults, options, $el.data(), {selector: selector}),
-                autocomplete;
+                _opts = $.extend(true, {}, defaults, options, $el.data(), {selector: selector});
 
             if($el.hasClass(utils.getClassname('ready')) || $el.hasClass(utils.getClassname('wrap'))) {
                 return;
@@ -248,7 +243,8 @@
 
             $el.data(ns.rocket, uxrocket);
 
-            autocomplete = new Autocomplete(this, _opts);
+            // Bind the plugin and attach the instance to data
+            $.data(this, ns.data, new Autocomplete(this, _opts));
         });
     };
 
