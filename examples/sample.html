@@ -3,91 +3,20 @@
 	<head>
 		<title>UX Rocket Autocomplete Sample</title>
 		<meta charset="utf-8" />
-		
-		<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-		<script src="../bower_components/handlebars/handlebars.js"></script>
-		<script src="../bower_components/uxrocket.handlebars/lib/uxrocket.handlebars.js"></script>
-		<script src="../lib/uxrocket.autocomplete.js"></script>
-		<script>
-			$(function(){
-				$("#ds").data('service', [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]);
-
-				$(".autocomplete").uxitdautocomplete({
-                    service: './autocomplete.php'
-                });
-			});
-		</script>
-
-		<script>
-			var dataSource = [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}];
-
-			var oldVersionDataSource = { "itemList": [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]};
-		</script>
 				
 		<style>
 			*, *:before, *:after { box-sizing: border-box }
 			body { margin: 0; padding: 0; font: 16px/1.4 "Gill Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 			.content { padding: 5em; }
 
-			.uxitd-plugin-wrap {
-				width: 350px;
-			}
-
-			.autocomplete:not(.uxitd-plugin-wrap) {
+			.autocomplete {
 				width: 350px;
 				font-size: 1rem;
 				padding: 5px;
 			}
-
-			.hide {
-				display: none;
-			}
-
-            /** Autocomplete Styles **/
-            .uxitd-autocomplete-wrap .icon-search:before {
-                content: "⚲";
-                position: absolute;
-                top: 25px;
-                right: -15px;
-                font-size: 24px;
-                transform: rotate(-60deg) translateY(-90%);
-            }
-
-            .uxitd-autocomplete-wrap .icon-loading:before {
-                content: '';
-            }
-
-            /** Clear styles **/
-			.uxitd-clear-wrap {
-				position: relative;
-				display: inline-block;
-			}
-
-			.uxitd-clear-ready {
-				width: 100%;
-				padding-right: 25px;
-			}
-
-			.uxitd-clear-icon {
-				position: absolute;
-				top: 0;
-				right: 35px;
-				width: 20px;
-				height: 32px;
-				font-size: 1rem;
-				color: #000;
-                cursor: pointer;
-			}
-
-			.uxitd-clear-icon:before {
-				position: absolute;
-				top: 50%;
-				right: 0;
-				transform: translateY(-50%);
-				content: "X";
-			}
-
 		</style>
+
+		<link rel="stylesheet" href="../dist/uxrocket.autocomplete.min.css" />
 	</head>
 	
 	<body>
@@ -97,6 +26,10 @@
 
 				<p class="wrap">
 					<input type="text" class="autocomplete" placeholder="Classic view" id="ac" data-cache="true" />
+				</p>
+
+				<p class="wrap">
+					<input type="text" class="autocomp" placeholder="Classic view" id="ac2" data-service="dataSource" />
 				</p>
 
 				<p class="wrap">
@@ -122,5 +55,25 @@
 				</p>
 			</div>
 		</div>
+
+		<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="../bower_components/handlebars/handlebars.js"></script>
+		<script src="../bower_components/uxrocket.handlebars/lib/uxrocket.handlebars.js"></script>
+		<script src="../dist/uxrocket.autocomplete.min.js"></script>
+		<script>
+			$(function(){
+				$("#ds").data('service', [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]);
+
+				$(".autocomplete").uxrautocomplete({
+					service: './autocomplete.php'
+				});
+			});
+		</script>
+
+		<script>
+			var dataSource = [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}];
+
+			var oldVersionDataSource = { "itemList": [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]};
+		</script>
 	</body>
 </html>

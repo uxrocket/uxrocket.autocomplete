@@ -1,5 +1,5 @@
 /* @author Bilal Cinarli */
-$autocomplete-version: 2.0.0;
+$autocomplete-version: 2.0 .0;
 
 /** -------------------------------------------
  	Auto Complete Styles
@@ -9,9 +9,46 @@ $autocomplete-version: 2.0.0;
         position: relative;
         display: inline-block;
     }
+
+    &-magnify {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 25px;
+        height: 100%;
+        font-size: 1.5em;
+        font-style: normal;
+        line-height: 1;
+        color: #37ade0;
+
+        &:before {
+            display: block;
+            content: "⚲";
+            transform: rotate(-45deg);
+        }
+    }
+
+    &-loading {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: dashed 2px #37ade0;
+        animation: uxr-autocomplete-loading 2s infinite linear;
+
+        &:before {
+            content: "";
+        }
+    }
 }
 
-@keyframes uxr-autocomplete-loading{
-    from   {  transform: rotate(0deg); }
-    to     {  transform: rotate(360deg); }
+@keyframes uxr-autocomplete-loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

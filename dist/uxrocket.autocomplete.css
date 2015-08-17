@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* @author Bilal Cinarli */
 /** -------------------------------------------
  	Auto Complete Styles
@@ -5,6 +6,42 @@
 .uxr-autocomplete-wrap {
   position: relative;
   display: inline-block;
+}
+
+.uxr-autocomplete-magnify {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 100%;
+  font-size: 1.5em;
+  font-style: normal;
+  line-height: 1;
+  color: #37ade0;
+}
+
+.uxr-autocomplete-magnify:before {
+  display: block;
+  content: "⚲";
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.uxr-autocomplete-loading {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: dashed 2px #37ade0;
+  -webkit-animation: uxr-autocomplete-loading 2s infinite linear;
+          animation: uxr-autocomplete-loading 2s infinite linear;
+}
+
+.uxr-autocomplete-loading:before {
+  content: "";
 }
 
 @-webkit-keyframes uxr-autocomplete-loading {

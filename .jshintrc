@@ -6,7 +6,7 @@
   "expr": true,
   "immed": true,
   "noarg": true,
-  "quotmark": "double",
+  "quotmark": "single",
   "undef": true,
   "unused": true,
   "node": true,
@@ -14,6 +14,7 @@
     "window": true,
     "Handlebars": true,
     "jQuery": true,
-    "$": true
+    "$": true,
+    "define": false
   }
 }

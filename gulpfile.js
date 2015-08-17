@@ -94,9 +94,9 @@ gulp.task("sass", tasks.sass);
 gulp.task("lint", tasks.lint);
 gulp.task("scripts", tasks.scripts);
 
-gulp.task("watch", ["sass", "lint"], function() {
+gulp.task("watch", ["sass", "lint", "scripts"], function() {
     gulp.watch(paths.lib + "**/*.scss", ["sass"]);
-    gulp.watch(paths.lib + "**/*.js", ["lint"]);
+    gulp.watch(paths.lib + "**/*.js", ["lint", "scripts"]);
 });
 
 gulp.task("default", ["watch"]);
