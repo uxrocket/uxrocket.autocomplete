@@ -92,7 +92,8 @@ type                 | list                 | Autocomplete seçeneklerinin çık
 service              | null                 | Metin alanında yapılan sorgunun yapılıp sonuçların alınacağı data setidir. Ajax sorgusu yapılacak bir __Servis URL__'i, sayfa içerisindeki bir __JSON Objesi__ ya da elemana _data_ olarak eklenmiş bir __Javascript Array__ 'i olabilir.
 item                 | 10                   | Listede çıkacak maksimum seçenek sayısını belirler.
 minLength            | 2                    | En az kaç karakterden sonra listenin görünür olacağını belirler.
-formdata             | null                 | Servis Ajax ile çağrılacağında, ihtiyaç halinde `serialize()` edilerek gönderilecek formun seçicisini belirler
+formdata             | null                 | Servis Ajax ile çağrılacağında, ihtiyaç halinde gönderilecek formun seçicisini belirler
+serialize            | String               | Ajax servisine gönderilen arama isteğine eklenen __formdata__ ile tanımlanmış formun hangi formatta _serialize_ edileceğini belirler. _String_, _Array_ ya da _Object_ şeklinde serialize işlemi gerçekleştirilebilir.
 queryType            | GET                  | Server'a göndereceğiniz sorgunun tipini belirler. GET veya POST olarak 2 değer alabilir.
 characterTextLimit   | 20                   | Kategori'li tipi kullanıyorsanız, kategori text'inin kısaltmaya yöneliktir.
 hidden               | null                 | Listeden seçim yapıldığında, seçimin idsi farklı bir alana eklenecekse, liste ile ilgili alanı css id ya da css classına göre ilişkilendirir.
