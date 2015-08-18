@@ -28,6 +28,8 @@
             service        : null,
             minLength      : 2,
             queryType      : 'GET',
+            formdata       : null,
+            serialize      : 'String',
             hidden         : null,
             template       : null,
             highlight      : true,
@@ -198,6 +200,14 @@
             }
 
             utils.callback(this.options.onSearch);
+        },
+
+        update: function() {
+            return ux.update(this.el);
+        },
+
+        destroy: function() {
+            return ux.destroy(this.el);
         }
     };
 
@@ -248,11 +258,55 @@
         });
     };
 
+    ux.update = function(el) {
+
+    };
+
+    ux.destroy = function(el) {
+        var $el = el !== undefined ? $(el) : $('.' + utils.getClassname('ready'));
+
+        $el.filter('input').each(function() {
+            var _this = $(this),
+                _instance = _this.data(ns.data),
+                _uxrocket = _this.data(ns.rocket);
+
+            // remove ready class
+            _this.removeClass(utils.getClassname('ready'));
+
+            // remove plugin events
+            _this.off(events.click + ' ' + events.keyup);
+
+            // remove icon and wrapper
+            _this.next('.' + utils.getClassname('magnify')).remove();
+
+            if(_uxrocket[ns.data].hasWrapper) {
+                if(Object.keys && Object.keys(_uxrocket).length === 1) {
+                    _this.unwrap();
+                }
+
+                else {
+                    _this.parent().removeClass(ns.wrap);
+                }
+            }
+
+            // remove plugin data
+            _this.removeData(ns.data);
+
+            // remove uxRocket registry
+            delete _uxrocket[ns.data];
+            _this.data(ns.rocket, _uxrocket);
+
+            utils.callback(_instance.options.onRemove);
+        });
+    };
+
 // version
     ux.version = '2.0.0';
 
 // default settings
     ux.settings = defaults;
+    ux.templates = templates;
+    ux.namespace = ns;
 }))
 ;
 
