@@ -17,7 +17,6 @@
             service          : null,
             minLength        : 2,
             formdata         : null,
-            serialize        : 'String', // String || Array || Object
             categoryTextLimit: 25,
             queryType        : 'GET',
             hidden           : null,
@@ -154,10 +153,6 @@
         $el.after('<i class="' + ns.icon + '"></i>');
     };
 
-    var results = function(request, response) {
-        console.log("results");
-    };
-
     var setSource = function($el) {
         var _opts = $el.data(ns.data),
             fdata = null,
@@ -165,12 +160,8 @@
             source = _opts.service,
             sourceFunction;
 
-        if(typeof source === "function") {
-            return source;
-        }
 
-
-        else if(!url_pattern.test(source) || typeof source === "object") {
+        if(!url_pattern.test(source) || typeof source === "object") {
             if(typeof source === "string") {
                 // we get source from "data-service" attribute,
                 // so we need to change its format to js array
@@ -214,7 +205,7 @@
                 }
 
                 if(_opts.formdata != null) {
-                    fdata = _opts.serialize === 'String' ? $(_opts.formdata).serialize() : $(_opts.formdata)['serialize' + _opts.serialize]();
+                    fdata = $(_opts.formdata).serialize();
                 }
 
                 $.ajax({
@@ -269,16 +260,6 @@
 
         $el.on(events.response, function(event, ui) {
             $(this).siblings('.' + ns.loading).removeClass(ns.loading);
-        });
-
-        $el.on('changeData', function(request) {
-            var term = $(this).data('uiAutocomplete').term,
-                items = $(this).data('uxAutocomplete').terms[term],
-                response = $(this).data('uxAutocomplete').response;
-
-            response($.map(items.slice(0, _opts.item), function(item) {
-                return setItem(item);
-            }));
         });
 
         $el.autocomplete({
@@ -417,24 +398,6 @@
         return item;
     };
 
-    $.fn.serializeObject = function() {
-        var _o = {},
-            _a = this.serializeArray();
-
-        $.each(_a, function() {
-            if(_o[this.name]) {
-                if(!_o[this.name].push) {
-                    _o[this.name] = [_o[this.name]];
-                }
-                _o[this.name].push(this.value || '');
-            } else {
-                _o[this.name] = this.value || '';
-            }
-        });
-
-        return _o;
-    };
-
     // global callback
     var callback = function(fn) {
         // if callback string is function call it directly
@@ -564,7 +527,7 @@
     };
 
     // version
-    ux.version = '1.8.2';
+    ux.version = '1.8.1';
 
     // settings
     ux.settings = defaults;
