@@ -17,7 +17,6 @@
             service          : null,
             minLength        : 2,
             formdata         : null,
-            serialize        : 'String', // String || Array || Object
             categoryTextLimit: 25,
             queryType        : 'GET',
             hidden           : null,
@@ -206,7 +205,7 @@
                 }
 
                 if(_opts.formdata != null) {
-                    fdata = _opts.serialize === 'String' ? $(_opts.formdata).serialize() : $(_opts.formdata)['serialize' + _opts.serialize]();
+                    fdata = $(_opts.formdata).serialize();
                 }
 
                 $.ajax({
@@ -399,24 +398,6 @@
         return item;
     };
 
-    $.fn.serializeObject = function() {
-        var _o = {},
-            _a = this.serializeArray();
-
-        $.each(_a, function() {
-            if(_o[this.name]) {
-                if(!_o[this.name].push) {
-                    _o[this.name] = [_o[this.name]];
-                }
-                _o[this.name].push(this.value || '');
-            } else {
-                _o[this.name] = this.value || '';
-            }
-        });
-
-        return _o;
-    };
-
     // global callback
     var callback = function(fn) {
         // if callback string is function call it directly
@@ -546,7 +527,7 @@
     };
 
     // version
-    ux.version = '1.8.2';
+    ux.version = '1.8.1';
 
     // settings
     ux.settings = defaults;

@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+	<head>
+		<title>UX Rocket Autocomplete Sample</title>
+		<meta charset="utf-8" />
+				
+		<style>
+			*, *:before, *:after { box-sizing: border-box }
+			body { margin: 0; padding: 0; font: 16px/1.4 "Gill Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+			.content { padding: 5em; }
+
+			.autocomplete {
+				width: 350px;
+				font-size: 1rem;
+				padding: 5px;
+			}
+		</style>
+
+		<link rel="stylesheet" href="../bower_components/uxrocket.jqueryui-lite/dist/uxrocket-jqueryui.css" />
+		<link rel="stylesheet" href="../dist/uxrocket-autocomplete.css" />
+	</head>
+	
+	<body>
+		<div class="content">
+			<div class="example">
+                <p>Please type a programing language like 'ActionScript', 'AppleScript', 'Asp', 'Basic', 'C', 'C++', 'Clojure', 'Cobol', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'Java', 'JavaScript', 'List', 'Perl', 'PHP', 'Ruby', 'Python', 'Scala', 'Scheme'</p>
+
+				<p class="wrap">
+					<input type="text" class="autocomplete" placeholder="Classic view" id="ac" data-cache="true" data-formdata="#ac-form" data-serialize="Object" />
+				</p>
+
+				<p class="wrap">
+					<input type="text" class="autocomplete" placeholder="With images" data-type="image" />
+				</p>
+
+                <p class="wrap">
+                    <input type="text" class="autocomplete" placeholder="With category" data-type="category" />
+                </p>
+
+                <p class="wrap">
+                    <input type="text" class="autocomplete" placeholder="With tree (both images and category)" data-type="tree" />
+                </p>
+
+				<p class="wrap">
+					<input type="text" class="autocomplete test" id="ds" placeholder="Classic view with dynamic source" />
+				</p>
+
+				<p class="wrap">
+					<input type="text" class="autocomplete" id="inline" placeholder="Classic view with inline data source" data-service="dataSource" />
+				<p class="wrap">
+					<input type="text" class="autocomplete" id="inline-old" placeholder="Classic view with inline old data source" data-service="oldVersionDataSource" />
+				</p>
+			</div>
+
+			<form style="display: none" id="ac-form">
+				<input type="hidden" name="sample" value="test" />
+				<input type="text" name="sample2" value="test2" />
+			</form>
+		</div>
+
+		<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="../bower_components/uxrocket.jqueryui-lite/lib/uxrocket.jqueryui.js"></script>
+		<script src="../bower_components/handlebars/handlebars.js"></script>
+		<script src="../bower_components/uxrocket.handlebars/lib/uxrocket.handlebars.js"></script>
+		<script src="../lib/uxrocket.autocomplete.js"></script>
+		<script>
+			$(function(){
+				$("#ds").data('service', [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]);
+
+				$(".autocomplete").uxitdautocomplete({
+					service: './autocomplete.php'
+				});
+			});
+		</script>
+
+		<script>
+			var dataSource = [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}];
+
+			var oldVersionDataSource = { "itemList": [{"name":"ActionScript","id":"01", "category":"A"},{"name":"AppleScript","id":"02","category":"A"},{"name":"Asp","id":"03","category":"A"},{"name":"Basic","id":"04","category":"B"},{"name":"Erlang","id":10,"category":"E"},{"name":"Fortran","id":11,"category":"F"},{"name":"Haskell","id":13,"category":"H"},{"name":"Java","id":14,"category":"J"},{"name":"JavaScript","id":15,"category":"J"},{"name":"Scala","id":21,"category":"S"},{"name":"İstanbul","id":15,"category":"İ"}]};
+		</script>
+	</body>
+</html>
