@@ -9,6 +9,9 @@ describe('Testing UX Rocket Autocomplete', function() {
         templates = $.uxrautocomplete.templates,
         namespace = $.uxrautocomplete.namespace,
         data = namespace.data,
+        customTemplate = {
+            item: '<li><a>{{$name}}</a></li>'
+        },
     // string
         dataSource = [{"name": "ActionScript", "id": "01", "category": "A"}, {"name": "AppleScript", "id": "02", "category": "A"}, {"name": "Asp", "id": "03", "category": "A"}, {
             "name"    : "Basic",
@@ -61,9 +64,15 @@ describe('Testing UX Rocket Autocomplete', function() {
         $inputs["_04"] = $("#ac04");
 
         $inputs._01.addClass('autocomplete');
+
         $inputs._02.data('service', source.older);
         $inputs._02.wrap('<label class="uxr-plugin-wrap previously-wrapped"></label>');
-        $inputs._04.data('service', function(){ console.log("function source") });
+
+        $inputs._03.data('template', customTemplate);
+
+        $inputs._04.data('service', function() {
+            console.log("function source")
+        });
 
         $.each($inputs, function(item) {
             $inputs[item].uxrautocomplete();
@@ -79,6 +88,17 @@ describe('Testing UX Rocket Autocomplete', function() {
 
         it('uxrautocomplete.settings', function() {
             expect($.uxrautocomplete).to.have.property('settings');
+        });
+
+        it('unique _instance', function(){
+            var instances = [];
+
+            $.each(autocomplete, function(item) {
+                expect(autocomplete[item]._instance).to.exist;
+                expect($.inArray(autocomplete[item]._instance, instances)).to.be.equal(-1);
+
+                instances.push(autocomplete[item]._instance);
+            });
         });
     });
 
@@ -122,20 +142,30 @@ describe('Testing UX Rocket Autocomplete', function() {
             expect($parent.is('label, .uxr-plugin-wrap, .uxr-autocomplete-wrap')).to.be.equal(true);
         });
 
-        it('Should show loading indicator', function(){
+        it('Should show loading indicator', function() {
             autocomplete._01.startLoading();
             expect(autocomplete._01.$icon.hasClass('uxr-autocomplete-loading')).to.be.equal(true);
         });
 
-        it('Should stop loading indicator', function(){
+        it('Should stop loading indicator', function() {
             autocomplete._01.stopLoading();
             expect(autocomplete._01.$icon.hasClass('uxr-autocomplete-loading')).to.be.false;
+        });
+
+        it('Each element should have results container', function() {
+            $.each(autocomplete, function(item) {
+                expect($("ul#" + autocomplete[item].id).length).to.be.equal(1);
+            });
         });
     });
 
     describe('Template Setup', function() {
         it('Default template set to "list"', function() {
-            expect(autocomplete._01.template).to.be.equal(templates.list);
+            expect(autocomplete._01.template).to.be.deep.equal(templates.list);
+        });
+
+        it('Template can be overwritten', function() {
+            expect(autocomplete._03.template).to.be.deep.equal(customTemplate);
         });
     });
 
