@@ -11,10 +11,55 @@
     </script>
 </head>
 <body>
-<div id="elements" style="display: none;"></div>
+<div id="elements" style="display: none;">
+    <input type="text" name="autocomplete-01" id="ac01" data-service="dataSource" class="autocomplete" />
+    <label class="uxr-plugin-wrap previously-wrapped">
+        <input type="text" name="autocomplete-02" id="ac02" />
+    </label>
+    <input type="text" name="autocomplete-03" id="ac03" data-service="source.new" />
+</div>
 <div id="mocha"></div>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../dist/uxrocket.autocomplete.js"></script>
+<script>
+    var dataSource = [{"name": "ActionScript", "id": "01", "category": "A"}, {"name": "AppleScript", "id": "02", "category": "A"}, {"name": "Asp", "id": "03", "category": "A"}, {
+        "name"    : "Basic",
+        "id"      : "04",
+        "category": "B"
+    }, {"name": "Erlang", "id": 10, "category": "E"}, {"name": "Fortran", "id": 11, "category": "F"}, {"name": "Haskell", "id": 13, "category": "H"}, {
+        "name"    : "Java",
+        "id"      : 14,
+        "category": "J"
+    }, {"name": "JavaScript", "id": 15, "category": "J"}, {"name": "Scala", "id": 21, "category": "S"}, {"name": "İstanbul", "id": 15, "category": "İ"}];
+
+    // chained
+    var source = {
+        new  : [{"name": "ActionScript", "id": "01", "category": "A"}, {"name": "AppleScript", "id": "02", "category": "A"}, {"name": "Asp", "id": "03", "category": "A"}, {
+            "name"    : "Basic",
+            "id"      : "04",
+            "category": "B"
+        }, {"name": "Erlang", "id": 10, "category": "E"}, {"name": "Fortran", "id": 11, "category": "F"}, {"name": "Haskell", "id": 13, "category": "H"}, {
+            "name"    : "Java",
+            "id"      : 14,
+            "category": "J"
+        }, {"name": "JavaScript", "id": 15, "category": "J"}, {"name": "Scala", "id": 21, "category": "S"}, {"name": "İstanbul", "id": 15, "category": "İ"}],
+        older: {
+            "itemList": [{"name": "ActionScript", "id": "01", "category": "A"}, {"name": "AppleScript", "id": "02", "category": "A"}, {
+                "name"    : "Asp",
+                "id"      : "03",
+                "category": "A"
+            }, {"name": "Basic", "id": "04", "category": "B"}, {"name": "Erlang", "id": 10, "category": "E"}, {"name": "Fortran", "id": 11, "category": "F"}, {
+                "name"    : "Haskell",
+                "id"      : 13,
+                "category": "H"
+            }, {"name": "Java", "id": 14, "category": "J"}, {"name": "JavaScript", "id": 15, "category": "J"}, {"name": "Scala", "id": 21, "category": "S"}, {
+                "name"    : "İstanbul",
+                "id"      : 15,
+                "category": "İ"
+            }]
+        }
+    };
+</script>
 
 <script src="../node_modules/mocha/mocha.js"></script>
 <script src="../node_modules/chai/chai.js"></script>

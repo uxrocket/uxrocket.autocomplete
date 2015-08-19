@@ -21,6 +21,7 @@
     'use strict';
 
     var ux, // local shorthand
+        rocketName = 'uxrAutocomplete',
 
         defaults = {
             type           : 'list',
@@ -29,15 +30,12 @@
             minLength      : 2,
             queryType      : 'GET',
             formdata       : null,
-            serialize      : 'String',
             hidden         : null,
             template       : null,
             highlight      : true,
             arrowSelection : false,
             arrowNavigation: true,
             cache          : false,
-
-            legacyClass: true,
 
             // callbacks
             onReady      : false,
@@ -99,8 +97,8 @@
             }
         },
         events = {
-            click: 'click.uxrAutocomplete',
-            keyup: 'keyup.uxrAutocomplete'
+            click: 'click.' + rocketName,
+            keyup: 'keyup.' + rocketName
         },
         keys = {
             return: 13,
@@ -113,7 +111,7 @@
         ns = {
             prefix : 'uxr-',
             rocket : 'uxRocket',
-            data   : 'uxrAutocomplete',
+            data   : rocketName,
             name   : 'autocomplete',
             wrap   : 'uxr-plugin-wrap',
             classes: {
@@ -125,32 +123,57 @@
         };
 
     // Constructor Method
-    var Autocomplete = function(el, options) {
+    var Autocomplete = function(el, options, selector) {
         var $el = $(el);
 
         this.el = el;
         this.$el = $el;
-        this.options = options;
+        this._name = rocketName;
+        this._defaults = defaults;
+        this.selector = selector;
+        this.options = $.extend(true, {}, defaults, options, $el.data());
 
-        this.setLayout();
-
-        utils.callback(options.onReady);
-
-        this.bindUIActions();
-        this.setTemplate();
+        this.init();
     };
 
     Autocomplete.prototype = {
-        classList    : '',
+        classList: '',
+        terms    : {},
+
+        init         : function() {
+            var uxrocket = this.$el.data(ns.rocket) || {};
+
+            // add ready class
+            this.$el.addClass(utils.getClassname('ready'));
+
+            // register plugin data to rocket
+            uxrocket[ns.data] = {hasWrapper: true, wrapper: ns.wrap, ready: utils.getClassname('ready'), selector: this.selector, options: this.options};
+            this.$el.data(ns.rocket, uxrocket);
+
+            // set plugin layout
+            this.setLayout();
+
+            this.prepareSource();
+
+            utils.callback(this.options.onReady);
+
+            this.bindUIActions();
+            this.setTemplate();
+        },
         handleClasses: function() {
             this.classList = this.$el.context.className.replace(utils.getClassname('ready'), '');
 
-            if(this.options.selector.charAt(0) === '.') {
-                this.classList = this.classList.replace(this.options.selector.substr(1), '');
+            if(this.selector.charAt(0) === '.') {
+                this.classList = this.classList.replace(this.selector.substr(1), '');
             }
 
             this.classList += ns.wrap + ' ' + utils.getClassname('wrap');
             this.classList = $.trim(this.classList);
+        },
+
+        removeClasses: function() {
+            this.$el.removeClass(utils.getClassname('ready'));
+            this.$el.parent().removeClass(this.classList.replace(ns.wrap, ''));
         },
 
         handleWrapper: function() {
@@ -161,12 +184,37 @@
 
         addIcon: function() {
             this.$el.after('<i class="' + utils.getClassname('magnify') + '"></i>');
+            this.$icon = this.$el.next('.' + utils.getClassname('magnify'));
         },
 
         setLayout: function() {
             this.handleClasses();
             this.handleWrapper();
             this.addIcon();
+        },
+
+        startLoading: function(){
+            this.$icon.addClass(utils.getClassname('loading'));
+        },
+
+        stopLoading: function(){
+            this.$icon.removeClass(utils.getClassname('loading'));
+        },
+
+        removeLayout: function() {
+            var _this = this,
+                uxrocket = _this.$el.data(ns.rocket);
+
+            // remove or reformat wrap
+            if(Object.keys && Object.keys(uxrocket).length === 1) {
+                _this.$el.unwrap();
+            }
+
+            else {
+                _this.$el.parent().removeClass(ns.wrap);
+            }
+
+            _this.$el.next('.' + utils.getClassname('magnify')).remove();
         },
 
         setTemplate: function() {
@@ -184,12 +232,19 @@
             var _this = this;
 
             _this.$el.on(events.keyup, function(e) {
-                var _length = $(this).val().length;
+                var val = $(this).val(),
+                    _length = val.length;
+
+                _this.lastTerm = val.toLowerCase();
 
                 if(_length >= _this.options.minLength) {
                     _this.onKeyup(e);
                 }
             });
+        },
+
+        unbindUIActions: function() {
+            this.$el.off('.' + rocketName);
         },
 
         onKeyup: function(e) {
@@ -200,6 +255,84 @@
             }
 
             utils.callback(this.options.onSearch);
+        },
+
+        prepareSource: function() {
+            var _this = this,
+                rgx_url = /^(http|https|\/|\.\/|\.\.\/)/,
+                source = this.options.service;
+
+            this.source = source;
+
+            if(typeof source === 'string') {
+                if(!rgx_url.test(source)) {
+                    this.source = utils.getStringVariable(source);
+                }
+
+                // there will be ajax
+                else {
+                    this.source = function() {
+                        var fdata = _this.serializeForm();
+
+                        $.ajax({
+                            url     : source,
+                            dataType: 'json',
+                            type    : this.options.queryType,
+                            data    : {
+                                term: 'as',
+                                formdata: fdata
+                            },
+                            success : function(data) {
+                                if(_this.options.cache) {
+                                    _this.terms[_this.lastTerm] = data;
+                                }
+
+                                var items = data.itemList || data;
+
+                                _this.showResults(items);
+                            }
+                        });
+                    };
+                }
+            }
+        },
+
+        search: function() {
+            var _this = this,
+                results,
+                haystack = this.source.itemList ? this.source.itemList : this.source,
+                needle = this.lastTerm;
+
+            this.startLoading();
+
+            if(typeof haystack === 'function') {
+                return haystack.apply(this);
+            }
+
+            // search in local source
+            else {
+                results = $.map(haystack, function(item) {
+                    if(_this.searchArray(item, 'as')) {
+                        return item;
+                    }
+                });
+
+                this.showResults(results);
+            }
+        },
+
+        searchArray: function(item, needle) {
+            return item.name.toLowerCase().indexOf(needle) > -1;
+        },
+
+        showResults: function(results) {
+            console.log(results);
+
+            this.stopLoading();
+        },
+
+        serializeForm: function(){
+            return $(this.options.formdata).serialize();
         },
 
         update: function() {
@@ -229,6 +362,27 @@
             }
         },
 
+        getStringVariable: function(str) {
+            var val;
+            // check if it is chained
+            if(str.indexOf('.') > -1) {
+                var chain = str.split('.'),
+                    chainVal = window[chain[0]];
+
+                for(var i = 1; i < chain.length; i++) {
+                    chainVal = chainVal[chain[i]];
+                }
+
+                val = chainVal;
+            }
+
+            else {
+                val = window[str];
+            }
+
+            return val;
+        },
+
         getClassname: function(which) {
             return ns.prefix + ns.name + '-' + ns.classes[which];
         }
@@ -239,22 +393,12 @@
         var selector = this.selector;
 
         return this.each(function() {
-            var $el = $(this),
-                uxrocket = $el.data(ns.rocket) || {},
-                _opts = $.extend(true, {}, defaults, options, $el.data(), {selector: selector});
-
-            if($el.hasClass(utils.getClassname('ready')) || $el.hasClass(utils.getClassname('wrap'))) {
+            if($.data(this, ns.data)) {
                 return;
             }
 
-            $el.addClass(utils.getClassname('ready'));
-
-            uxrocket[ns.data] = {hasWrapper: true, wrapper: ns.wrap, ready: utils.getClassname('ready'), selector: selector, options: _opts};
-
-            $el.data(ns.rocket, uxrocket);
-
             // Bind the plugin and attach the instance to data
-            $.data(this, ns.data, new Autocomplete(this, _opts));
+            $.data(this, ns.data, new Autocomplete(this, options, selector));
         });
     };
 
@@ -271,23 +415,13 @@
                 _uxrocket = _this.data(ns.rocket);
 
             // remove ready class
-            _this.removeClass(utils.getClassname('ready'));
+            _instance.removeClasses();
 
             // remove plugin events
-            _this.off(events.click + ' ' + events.keyup);
+            _instance.unbindUIActions();
 
-            // remove icon and wrapper
-            _this.next('.' + utils.getClassname('magnify')).remove();
-
-            if(_uxrocket[ns.data].hasWrapper) {
-                if(Object.keys && Object.keys(_uxrocket).length === 1) {
-                    _this.unwrap();
-                }
-
-                else {
-                    _this.parent().removeClass(ns.wrap);
-                }
-            }
+            // remove layout
+            _instance.removeLayout();
 
             // remove plugin data
             _this.removeData(ns.data);
