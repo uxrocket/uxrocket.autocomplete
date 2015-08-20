@@ -32,6 +32,7 @@
     "grunt-contrib-uglify": "^0.9.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
+    "gulp-csslint": "^0.2.0",
     "gulp-header": "^1.2.2",
     "gulp-jshint": "^1.11.2",
     "gulp-mocha-phantomjs": "^0.8.1",

@@ -20,6 +20,7 @@ var gulp = require("gulp"),
 
 // lint
     jshint = require("gulp-jshint"),
+    csslint = require("gulp-csslint"),
 
 // testing
     mochaPhantomJs = require('gulp-mocha-phantomjs');
@@ -27,7 +28,7 @@ var gulp = require("gulp"),
 var paths = {
     lib     : 'lib/',
     dist    : 'dist/',
-    test   : 'test/',
+    test    : 'test/',
     examples: 'examples/'
 };
 
@@ -73,6 +74,12 @@ var tasks = {
             .pipe(gulp.dest(paths.dist));
     },
 
+    csslint: function() {
+        return gulp.src(paths.dist + "uxrocket.autocomplete.css")
+            .pipe(csslint())
+            .pipe(csslint.reporter());
+    },
+
     lint: function() {
         return gulp.src(paths.lib + "**/*.js")
             .pipe(jshint()).on("error", notify.onError("Error: <%= error.message %>"))
@@ -100,12 +107,14 @@ var now = function() {
 };
 
 gulp.task('sass', tasks.sass);
+gulp.task('csslint', tasks.csslint);
 gulp.task('lint', tasks.lint);
 gulp.task('scripts', tasks.scripts);
 gulp.task('mocha', tasks.mocha);
 
-gulp.task('watch', ['sass', 'lint', 'scripts', 'mocha'], function() {
+gulp.task('watch', ['csslint', 'sass', 'lint', 'scripts', 'mocha'], function() {
     gulp.watch(paths.lib + '**/*.scss', ['sass']);
+    gulp.watch(paths.dist + '**/*.css', ['csslint']);
     gulp.watch(paths.lib + '**/*.js', ['lint', 'scripts', 'mocha']);
 });
 
