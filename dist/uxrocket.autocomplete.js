@@ -42,6 +42,7 @@
             onReady      : false,
             onSearch     : false,
             onSelect     : false,
+            onEnter      : false,
             onButtonClick: false,
             onClearCache : false,
             onUpdate     : false,
@@ -133,7 +134,8 @@
                 category : 'category',
                 option   : 'option',
                 matched  : 'matched',
-                highlight: 'highlight'
+                highlight: 'highlight',
+                selected : 'selected'
             }
         };
 
@@ -262,14 +264,39 @@
                     _this.onKeyup(e);
                 }
 
-                if(_length === 0){
+                if(_length === 0) {
                     _this.hideContainer();
                 }
             });
 
             _this.$el.on(events.blur, function(e) {
-                _this.onBlur(e);
+                //_this.onBlur(e);
             });
+
+            _this.$list.on(events.click, '.' + utils.getClassname('option'), function(e) {
+                e.preventDefault();
+                _this.select(e);
+            });
+        },
+
+        select: function($selected) {
+            var selected = $selected instanceof jQuery ? $selected : $($selected.currentTarget);
+
+            selected.siblings().removeClass(utils.getClassname('selected')).end().addClass(utils.getClassname('selected'));
+            this.setValue(selected);
+            this.hideContainer();
+
+            utils.callback(this.options.onSelect);
+        },
+
+        setValue: function(selected) {
+            var text = selected.text().trim();
+
+            if(text === '') {
+                text = this.lastTerm;
+            }
+
+            this.$el.val(text);
         },
 
         unbindUIActions: function() {
@@ -277,8 +304,20 @@
         },
 
         onKeyup: function(e) {
-            if(e.keyCode === 38 || e.keyCode === 40) {
+            var _this = this;
+
+            if(e.keyCode === keys.up || e.keyCode === keys.down) {
                 this.onVerticalArrow(keys.codes[e.keyCode]);
+            }
+
+            else if(e.keyCode === keys.return) {
+                if(this.$list.is(':visible')) {
+                    this.select(this.$list.find('.' + utils.getClassname('highlight')));
+                }
+            }
+
+            else if(e.keyCode === keys.esc) {
+                this.hideContainer();
             }
 
             else {
@@ -292,7 +331,7 @@
         },
 
         onVerticalArrow: function(updown) {
-            var selected, text,
+            var selected,
                 direction = updown === 'up' ? 'prev' : 'next',
                 highlighted = this.$list.find('.' + utils.getClassname('highlight'));
 
@@ -300,7 +339,7 @@
                 this.$list.show();
             }
 
-            if(!highlighted.length){
+            if(!highlighted.length) {
                 selected = this.$list.find('.' + utils.getClassname('option')).first().addClass(utils.getClassname('highlight'));
             }
 
@@ -308,15 +347,7 @@
                 selected = highlighted.removeClass(utils.getClassname('highlight'))[direction]().addClass(utils.getClassname('highlight'));
             }
 
-            text = selected.text().trim();
-
-            console.log(text);
-
-            if(text === ''){
-                text = this.lastTerm;
-            }
-
-            this.$el.val(text);
+            this.setValue(selected);
         },
 
         prepareContainer: function() {
@@ -421,7 +452,7 @@
             return $ul.css({top: top, left: left, minWidth: width});
         },
 
-        hideContainer: function(){
+        hideContainer: function() {
             $('#' + this.id).delay(100).hide();
         },
 
