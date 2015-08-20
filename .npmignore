@@ -1,0 +1,8 @@
+.jshintignore
+.jshintrc
+
+.travis.yml
+
+test
+Gruntfile.js
+gulpfile.js

@@ -43,5 +43,10 @@
     "jquery": "latest",
     "mocha": "^2.2.5",
     "phantomjs": "^1.9.18"
+  },
+  "scripts": {
+    "build": "npm install && gulp",
+    "start": "gulp default",
+    "test": "gulp && gulp mocha"
   }
 }
