@@ -1,6 +1,6 @@
 {
   "name": "uxrocket.autocomplete",
-  "version": "1.8.2",
+  "version": "2.0.0",
   "homepage": "https://github.com/uxrocket/uxrocket.autocomplete",
   "authors": [
     "Bilal Çınarlı <bcinarli@gmail.com>"
@@ -8,16 +8,15 @@
   "description": "UX Rocket Autocomplete: A jQueryUI autocomplete wrapper",
   "main": "lib/uxrocket.autocomplete.js",
   "dependencies": {
-    "jquery": ">=1.11.1",
-	"uxrocket.jqueryui-lite": "latest",
-	"handlebars": ">=2.0.0",
-	"uxrocket.handlebars": "latest"
+    "jquery": "latest",
+    "handlebars": "latest",
+    "uxrocket.handlebars": "latest"
   },
   "keywords": [
     "jQuery",
     "javascript",
     "jqueryui",
-	"autocomplete",
+    "autocomplete",
     "uxrocket"
   ],
   "license": "MIT",

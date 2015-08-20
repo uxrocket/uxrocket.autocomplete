@@ -1,189 +1,98 @@
 /* @author Bilal Cinarli */
-$autocomplete-version: 1.5.1;
+$autocomplete-version: 2.0 .0;
+
+$text: #444;
+$highlight: #37ade0;
+$border: #ccc;
 
 /** -------------------------------------------
  	Auto Complete Styles
     ------------------------------------------- **/
-.uxitd-autocomplete-ready {
+.uxr-autocomplete {
+    &-wrap {
+        position: relative;
+        display: inline-block;
+    }
 
-}
-
-.uxitd-autocomplete-wrap {
-	position: relative;
-	display: inline-block;
-
-	.icon-search {
+    &-magnify {
         position: absolute;
         top: 0;
         right: 0;
         width: 25px;
         height: 100%;
-        font-size: 1.2em;
-        color: #37ade0;
+        font-size: 1.5em;
+        font-style: normal;
+        line-height: 1;
+        color: $highlight;
 
         &:before {
-            position: absolute;
-            top: 50%;
-            right: 5px;
-            margin-top: -9px;
+            display: block;
+            content: "⚲";
+            transform: rotate(-45deg);
         }
-	}
+    }
 
-    .icon-loading {
+    &-loading {
+        position: absolute;
         top: 5px;
         right: 5px;
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        border: dashed 2px #37ade0;
-        -webkit-animation: loading 2s infinite linear;
-        -moz-animation: loading 2s infinite linear;
-        -o-animation: loading 2s infinite linear;
-        animation: loading 2s infinite linear;
+        border: dashed 2px $highlight;
+        animation: uxr-autocomplete-loading 2s infinite linear;
 
         &:before {
-            content: '';
+            content: "";
         }
     }
 
-	[class*="-column"],
-    .uxitd-autocomplete-ready {
-		width: 100%;
-	}
-}
+    // suggestion list
+    &-select {
+        position: absolute;
+        list-style: none;
+        overflow-y: scroll;
+        max-height: 250px; // width calculated from js
+        margin: 0;
+        padding: 0;
+        border: 1px solid $border;
+        background-color: #fff;
+        box-sizing: border-box;
+    }
 
-@-webkit-keyframes loading{
-    from   {  transform: rotate(0deg); }
-    to     {  transform: rotate(360deg); }
-}
-
-@-moz-keyframes loading{
-    from   {  transform: rotate(0deg); }
-    to     {  transform: rotate(360deg); }
-}
-
-@-o-keyframes loading{
-    from   {  transform: rotate(0deg); }
-    to     {  transform: rotate(360deg); }
-}
-
-@keyframes loading{
-    from   {  transform: rotate(0deg); }
-    to     {  transform: rotate(360deg); }
-}
-
-.uxitd-autocomplete-icon-clickable {
-    cursor: pointer;
-}
-
-.ui-menu {
-	padding: 0;
-	border: 1px solid #555;
-	background: #fff;
-	box-sizing: content-box;
-
-	&:after,
-	&:before { left: 25px; }
-
-    .ui-menu-item {
+    &-option {
         display: block;
-        float: none;
-        margin-top: 0;
-        border-top: 1px solid #eee;
+        border-top: 1px solid lighten($border, 10%);
 
         &:first-child {
             border-top: none
         }
 
         a {
-            margin: 0;
-            padding: 10px 5px;
-            border-radius: 1px;
-            color: #999;
-            cursor: pointer;
-            overflow: hidden;
-
-            &:hover {
-                background: #37ade0;
-                color: #fff;
-
-                .matched {
-                    color: #fff;
-                }
-            }
-
-            &.ui-state-focus,
-            &.ui-state-active {
-                margin: 0;
-            }
-
-            .matched {
-                color: #37ade0;
-                font-weight: bold;
-            }
+            display: block;
+            padding: 5px;
+            color: $text;
         }
     }
 
-    .ui-state-focus {
+    &-highlight,
+    &-option:hover {
         a {
-            background: #37ade0;
+            background-color: $highlight;
             color: #fff;
-
-            .matched {
-                color: #fff;
-            }
         }
     }
 
-    .item-image {
-        $img-size: 24px;
-
-        display: inline-block;
-        width: $img-size;
-        height: $img-size;
-        margin-right: 8px;
-        overflow: hidden;
-        vertical-align: middle;
-
-        img {
-            max-width: $img-size;
-            max-height: $img-size;
-        }
+    &-matched {
+        font-weight: bold;
     }
-
-    &.uxitd-category{
-        min-width: 200px;
-        padding-left: 150px;
-        max-height: 250px;
-        overflow: auto;
-
-		.ui-menu-item {
-			border-left: 1px solid #ccc;
-
-			a {
-				border-left: 1px solid #e5e5e5;
-			}
-		}
-	}
-
-    .uxitd-autocomplete-category {
-        position:absolute;
-        left:0;
-		padding: 10px;
-		font-weight: bold;
-        width:150px;
-        margin-top:-1px;
-	}
 }
 
-.ui-autocomplete {
-  max-height: 250px;
-  overflow: auto;
-}
-
-.ui-menu-item {
-  em {
-    margin-left: 32px;
-    font-size: 11px;
-  }
+@keyframes uxr-autocomplete-loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

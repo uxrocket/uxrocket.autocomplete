@@ -1,0 +1,20 @@
+{
+  "boss": true,
+  "curly": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "expr": true,
+  "immed": true,
+  "noarg": true,
+  "quotmark": "single",
+  "undef": true,
+  "unused": true,
+  "node": true,
+  "globals": {
+    "window": true,
+    "Handlebars": true,
+    "jQuery": true,
+    "$": true,
+    "define": false
+  }
+}
