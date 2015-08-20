@@ -8,8 +8,7 @@
   },
   "dependencies": {
     "jquery": "latest",
-    "handlebars": "latest",
-    "uxrocket.handlebars": "latest"
+    "handlebars": "latest"
   },
   "keywords": [
     "jQuery",
@@ -41,7 +40,7 @@
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
-    "jquery": "^2.1.4",
+    "jquery": "latest",
     "mocha": "^2.2.5",
     "phantomjs": "^1.9.18"
   }
