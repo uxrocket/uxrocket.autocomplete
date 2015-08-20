@@ -44,6 +44,43 @@
   content: "";
 }
 
+.uxr-autocomplete-select {
+  position: absolute;
+  list-style: none;
+  overflow-y: scroll;
+  max-height: 250px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.uxr-autocomplete-option {
+  display: block;
+  border-top: 1px solid #e6e6e6;
+}
+
+.uxr-autocomplete-option:first-child {
+  border-top: none;
+}
+
+.uxr-autocomplete-option a {
+  display: block;
+  padding: 5px;
+  color: #444;
+}
+
+.uxr-autocomplete-option-highlight a,
+.uxr-autocomplete-option:hover a {
+  background-color: #37ade0;
+  color: #fff;
+}
+
+.uxr-autocomplete-matched {
+  font-weight: bold;
+}
+
 @-webkit-keyframes uxr-autocomplete-loading {
   from {
     -webkit-transform: rotate(0deg);

@@ -24,29 +24,9 @@ describe('Testing UX Rocket Autocomplete', function() {
         }, {"name": "JavaScript", "id": 15, "category": "J"}, {"name": "Scala", "id": 21, "category": "S"}, {"name": "İstanbul", "id": 15, "category": "İ"}],
     // chained
         source = {
-            new  : [{"name": "ActionScript", "id": "01", "category": "A"}, {"name": "AppleScript", "id": "02", "category": "A"}, {"name": "Asp", "id": "03", "category": "A"}, {
-                "name"    : "Basic",
-                "id"      : "04",
-                "category": "B"
-            }, {"name": "Erlang", "id": 10, "category": "E"}, {"name": "Fortran", "id": 11, "category": "F"}, {"name": "Haskell", "id": 13, "category": "H"}, {
-                "name"    : "Java",
-                "id"      : 14,
-                "category": "J"
-            }, {"name": "JavaScript", "id": 15, "category": "J"}, {"name": "Scala", "id": 21, "category": "S"}, {"name": "İstanbul", "id": 15, "category": "İ"}],
+            new  : dataSource,
             older: {
-                "itemList": [{"name": "ActionScript", "id": "01", "category": "A"}, {"name": "AppleScript", "id": "02", "category": "A"}, {
-                    "name"    : "Asp",
-                    "id"      : "03",
-                    "category": "A"
-                }, {"name": "Basic", "id": "04", "category": "B"}, {"name": "Erlang", "id": 10, "category": "E"}, {"name": "Fortran", "id": 11, "category": "F"}, {
-                    "name"    : "Haskell",
-                    "id"      : 13,
-                    "category": "H"
-                }, {"name": "Java", "id": 14, "category": "J"}, {"name": "JavaScript", "id": 15, "category": "J"}, {"name": "Scala", "id": 21, "category": "S"}, {
-                    "name"    : "İstanbul",
-                    "id"      : 15,
-                    "category": "İ"
-                }]
+                "itemList": dataSource
             }
         };
 
@@ -90,7 +70,7 @@ describe('Testing UX Rocket Autocomplete', function() {
             expect($.uxrautocomplete).to.have.property('settings');
         });
 
-        it('unique _instance', function(){
+        it('unique _instance', function() {
             var instances = [];
 
             $.each(autocomplete, function(item) {
@@ -171,6 +151,14 @@ describe('Testing UX Rocket Autocomplete', function() {
 
 
     describe('Public Methods', function() {
+        describe('Clear Cache', function() {
+            it('Will clear the search cache', function() {
+                autocomplete._01.clearCache();
+
+                expect(autocomplete._01.terms).to.be.empty;
+            });
+        });
+
         describe('Update', function() {
             it('Will update plugin settings', function() {
 

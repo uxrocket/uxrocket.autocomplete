@@ -1,6 +1,10 @@
 /* @author Bilal Cinarli */
 $autocomplete-version: 2.0 .0;
 
+$text: #444;
+$highlight: #37ade0;
+$border: #ccc;
+
 /** -------------------------------------------
  	Auto Complete Styles
     ------------------------------------------- **/
@@ -19,7 +23,7 @@ $autocomplete-version: 2.0 .0;
         font-size: 1.5em;
         font-style: normal;
         line-height: 1;
-        color: #37ade0;
+        color: $highlight;
 
         &:before {
             display: block;
@@ -35,12 +39,52 @@ $autocomplete-version: 2.0 .0;
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        border: dashed 2px #37ade0;
+        border: dashed 2px $highlight;
         animation: uxr-autocomplete-loading 2s infinite linear;
 
         &:before {
             content: "";
         }
+    }
+
+    // suggestion list
+    &-select {
+        position: absolute;
+        list-style: none;
+        overflow-y: scroll;
+        max-height: 250px; // width calculated from js
+        margin: 0;
+        padding: 0;
+        border: 1px solid $border;
+        background-color: #fff;
+        box-sizing: border-box;
+    }
+
+    &-option {
+        display: block;
+        border-top: 1px solid lighten($border, 10%);
+
+        &:first-child {
+            border-top: none
+        }
+
+        a {
+            display: block;
+            padding: 5px;
+            color: $text;
+        }
+    }
+
+    &-option-highlight,
+    &-option:hover {
+        a {
+            background-color: $highlight;
+            color: #fff;
+        }
+    }
+
+    &-matched {
+        font-weight: bold;
     }
 }
 
