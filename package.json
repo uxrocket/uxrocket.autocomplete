@@ -45,8 +45,6 @@
     "phantomjs": "^1.9.18"
   },
   "scripts": {
-    "build": "npm install && gulp",
-    "start": "gulp default",
-    "test": "gulp && gulp mocha"
+    "test": "gulp mocha"
   }
 }

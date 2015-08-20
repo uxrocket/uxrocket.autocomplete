@@ -6,6 +6,7 @@
 
 var gulp = require("gulp"),
     pkg = require('./package.json'),
+    isTravis = process.env.TRAVIS || false,
 
 // utils
     header = require("gulp-header"),
