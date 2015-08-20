@@ -1,5 +1,6 @@
-UX Rocket Autocomplete
+UX Rocket Autocomplete [![Build Status](https://travis-ci.org/uxrocket/uxrocket.autocomplete.svg?branch=master)](https://travis-ci.org/uxrocket/uxrocket.autocomplete)
 =====================
+
 Autocomplete plugini, farklı içerik formatlarını kullanarak input girişlerinde örnek liste gösterimi yapmaktadır. Ayrıca, autocomplete olarak çalışacak alanlarda `data` tanımları ile de ayarlar değiştirilebilir.
 
 ```HTML
