@@ -2,6 +2,8 @@
  * @author Bilal Cinarli
  */
 
+var expect = chai.expect;
+
 describe('Testing UX Rocket Autocomplete', function() {
     var $inputs = {},
         autocomplete = {},
@@ -161,7 +163,10 @@ describe('Testing UX Rocket Autocomplete', function() {
 
         describe('Update', function() {
             it('Will update plugin settings', function() {
+                autocomplete._01.update({ cache: false, type: 'image' });
 
+                expect(autocomplete._01.options.cache).to.be.false;
+                expect(autocomplete._01.options.type).to.be.equal('image');
             });
         });
 

@@ -19,9 +19,8 @@
     <input type="text" name="autocomplete-03" id="ac03" data-service="source.new" />
 </div>
 <div id="mocha"></div>
-<script src="../node_modules/jquery/dist/jquery.js"></script>
-<script src="../bower_components/handlebars/handlebars.min.js"></script>
-<script src="../dist/uxrocket.autocomplete.js"></script>
+<div id="messages"></div>
+<div id="fixtures"></div>
 <script>
     var dataSource = [{"name": "ActionScript", "id": "01", "category": "A"}, {"name": "AppleScript", "id": "02", "category": "A"}, {"name": "Asp", "id": "03", "category": "A"}, {
         "name"    : "Basic",
@@ -64,10 +63,13 @@
 
 <script src="../node_modules/mocha/mocha.js"></script>
 <script src="../node_modules/chai/chai.js"></script>
+<!--<script src="../node_modules/blanket/dist/mocha/blanket_mocha.js"></script>-->
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../bower_components/handlebars/handlebars.min.js"></script>
+<script src="../dist/uxrocket.autocomplete.js" data-cover></script>
 <script>
-    mocha.ui('bdd');
-    mocha.reporter('html');
-    var expect = chai.expect;
+    mocha.setup('bdd');
 </script>
 <script src="tests.js"></script>
 <script>
