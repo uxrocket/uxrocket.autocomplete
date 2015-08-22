@@ -577,7 +577,7 @@
     };
 
 
-    ux = $.fn.uxrautocomplete = $.fn.uxitdautocomplete = $.uxrautocomplete = function(options) {
+    ux = $.fn.autocomplete = $.fn.uxrautocomplete = $.fn.uxitdautocomplete = $.uxrautocomplete = function(options) {
         var selector = this.selector;
 
         return this.each(function() {

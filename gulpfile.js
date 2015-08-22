@@ -69,7 +69,7 @@ var tasks = {
                 browsers: ['last 3 versions']
             }))
             .pipe(rename('uxrocket.autocomplete.min.css'))
-            .pipe(header(banner, {pkg: pkg, date: now()}))
+            .pipe(header(banner, {pkg: pkg, date: new Date()}))
             .pipe(sourcemaps.write('./'))
             .pipe(notify('Sass styles completed'))
             .pipe(gulp.dest(paths.dist));
@@ -94,17 +94,12 @@ var tasks = {
             .pipe(rename('uxrocket.autocomplete.js'))
             .pipe(gulp.dest(paths.dist))
             .pipe(uglify()).on("error", notify.onError("Error: <%= error.message %>"))
-            .pipe(header(banner, {pkg: pkg, date: now()}))
+            .pipe(header(banner, {pkg: pkg, date: new Date()}))
             .pipe(rename('uxrocket.autocomplete.min.js'))
             .pipe(sourcemaps.write('./'))
             .pipe(notify('Script file uglified'))
             .pipe(gulp.dest(paths.dist));
     }
-};
-
-var now = function() {
-    var d = new Date();
-    return d.getFullYear() + '-' + (d.getMonth() < 10 ? '0' + d.getMonth() : d.getMonth()) + '-' + (d.getDay() < 10 ? '0' + d.getDay() : d.getDay());
 };
 
 gulp.task('sass', tasks.sass);
