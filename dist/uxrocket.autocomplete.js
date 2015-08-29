@@ -95,6 +95,7 @@
         events = {
             click: 'click.' + rocketName,
             keyup: 'keyup.' + rocketName,
+            input: 'input.' + rocketName,
             blur : 'blur.' + rocketName
         },
         keys = {
@@ -186,7 +187,7 @@
                 this.classList = this.classList.replace(this.selector.substr(1), '');
             }
 
-            this.classList += ns.wrap + ' ' + utils.getClassname('wrap');
+            this.classList += ns.wrap + ' ' + utils.getClassname('wrap') + ' ' + utils.getClassname('wrap') + '-' + this._instance;
             this.classList = $.trim(this.classList);
         },
 
@@ -236,6 +237,10 @@
             _this.$el.next('.' + utils.getClassname('magnify')).remove();
         },
 
+        removeContainer: function() {
+            $('#' + this.id).remove();
+        },
+
         setTemplate: function() {
             this.template = null;
 
@@ -250,7 +255,7 @@
         bindUIActions: function() {
             var _this = this;
 
-            _this.$el.on(events.keyup, function(e) {
+            _this.$el.on(events.keyup + ' ' + events.input, function(e) {
                 var val = $(this).val(),
                     _length = val.length;
 
@@ -270,6 +275,12 @@
             _this.$list.on(events.click, '.' + utils.getClassname('option'), function(e) {
                 e.preventDefault();
                 _this.select(e);
+            });
+
+            $('body').on('DOMNodeRemoved', function(e) {
+                if(e.target === _this.el) {
+                    _this.cleanUp();
+                }
             });
         },
 
@@ -321,7 +332,7 @@
         onBlur: function() {
             var _this = this;
 
-            setTimeout(function(){
+            setTimeout(function() {
                 _this.hideContainer();
             }, 150);
         },
@@ -529,6 +540,13 @@
 
         destroy: function() {
             return ux.destroy(this.el);
+        },
+
+        cleanUp: function() {
+            // remove wrapper
+            $('.' + utils.getClassname('wrap') + '-' + this._instance).remove();
+
+            this.removeContainer();
         }
     });
 
@@ -607,7 +625,7 @@
         var $el, opts;
 
         // all elements will update according to new options
-        if(typeof options === 'undefined' && typeof el === 'object'){
+        if(typeof options === 'undefined' && typeof el === 'object') {
             $el = $('.' + utils.getClassname('ready'));
             opts = el;
         }
@@ -616,7 +634,7 @@
             opts = options;
         }
 
-        $el.filter('input').each(function(){
+        $el.filter('input').each(function() {
             var _this = $(this),
                 _instance = _this.data(ns.data),
                 _opts = _instance.options;
@@ -625,7 +643,7 @@
             _instance.options = $.extend(true, {}, _opts, opts);
 
             // clear cache if cache set to false
-            if(!_instance.options.cache){
+            if(!_instance.options.cache) {
                 ux.clearCache(_this);
             }
 
@@ -653,6 +671,9 @@
 
             // remove layout
             _instance.removeLayout();
+
+            // remove container
+            _instance.removeContainer();
 
             // remove plugin data
             _this.removeData(ns.data);

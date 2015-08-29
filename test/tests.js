@@ -35,15 +35,19 @@ describe('Testing UX Rocket Autocomplete', function() {
     before(function() {
         // prepare the elements
         $("#elements")
-            .append('<input type="text" name="autocomplete-01" id="ac01" data-service="dataSource" />')
+            .append('<input type="text" name="autocomplete-01" id="ac01" data-service="dataSource" data-cache="true" />')
             .append('<input type="text" name="autocomplete-02" id="ac02" />')
             .append('<input type="text" name="autocomplete-03" id="ac03" data-service="source.new" />')
-            .append('<input type="text" name="autocomplete-04" id="ac04" />');
+            .append('<input type="text" name="autocomplete-04" id="ac04" />')
+            .append('<input type="text" name="autocomplete-05" id="ac05" />')
+            .append('<input type="text" name="autocomplete-06" id="ac06" />');
 
         $inputs["_01"] = $("#ac01");
         $inputs["_02"] = $("#ac02");
         $inputs["_03"] = $("#ac03");
         $inputs["_04"] = $("#ac04");
+        $inputs["_05"] = $("#ac05");
+        $inputs["_06"] = $("#ac06");
 
         $inputs._01.addClass('autocomplete');
 
@@ -111,7 +115,7 @@ describe('Testing UX Rocket Autocomplete', function() {
         });
 
         it('Wrapper Classlist', function() {
-            expect(autocomplete._01.classList).to.be.equal('autocomplete uxr-plugin-wrap uxr-autocomplete-wrap');
+            expect(autocomplete._01.classList).to.be.equal('autocomplete uxr-plugin-wrap uxr-autocomplete-wrap uxr-autocomplete-wrap-1');
         });
 
         it('Should wrapped with <span> if not wrapped before', function() {
@@ -151,6 +155,39 @@ describe('Testing UX Rocket Autocomplete', function() {
         });
     });
 
+    describe('Internal Methods', function() {
+        describe('Cached Results', function() {
+            it('Should return false when no search done', function() {
+                expect(autocomplete._01.isCached()).to.be.false;
+            });
+
+            it('Should return true after search and cache option set to true', function() {
+                autocomplete._01.$el.trigger('focus').val('as').trigger('keyup');
+
+                expect(autocomplete._01.lastTerm).to.be.equal('as');
+                expect(autocomplete._01.terms['as']).to.not.equal('undefined');
+                expect(autocomplete._01.isCached()).to.be.true;
+            });
+        });
+
+        describe('Hide Container', function() {
+            it('The result container should hidden', function() {
+                autocomplete._01.hideContainer();
+
+                expect($('#' + autocomplete._01.id).is(':visible')).to.be.false;
+            });
+        });
+
+        describe('Remove Container', function() {
+            before(function() {
+                autocomplete._06.removeContainer();
+            });
+
+            it('Will remove the results container', function() {
+                expect($('#' + autocomplete._06.id).length).to.be.equal(0);
+            });
+        });
+    });
 
     describe('Public Methods', function() {
         describe('Clear Cache', function() {
@@ -163,7 +200,7 @@ describe('Testing UX Rocket Autocomplete', function() {
 
         describe('Update', function() {
             it('Will update plugin settings', function() {
-                autocomplete._01.update({ cache: false, type: 'image' });
+                autocomplete._01.update({cache: false, type: 'image'});
 
                 expect(autocomplete._01.options.cache).to.be.false;
                 expect(autocomplete._01.options.type).to.be.equal('image');

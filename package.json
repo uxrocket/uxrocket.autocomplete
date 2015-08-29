@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/uxrocket/uxrocket.autocomplete",
   "devDependencies": {
+    "blanket": "^1.1.7",
     "chai": "^3.2.0",
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.11.2",
@@ -40,7 +41,6 @@
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
-    "jquery": "latest",
     "mocha": "^2.2.5",
     "phantomjs": "^1.9.18"
   },

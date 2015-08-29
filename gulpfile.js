@@ -90,13 +90,11 @@ var tasks = {
 
     scripts: function() {
         return gulp.src(paths.lib + "**/*.js")
-            .pipe(sourcemaps.init())
             .pipe(rename('uxrocket.autocomplete.js'))
             .pipe(gulp.dest(paths.dist))
             .pipe(uglify()).on("error", notify.onError("Error: <%= error.message %>"))
             .pipe(header(banner, {pkg: pkg, date: new Date()}))
             .pipe(rename('uxrocket.autocomplete.min.js'))
-            .pipe(sourcemaps.write('./'))
             .pipe(notify('Script file uglified'))
             .pipe(gulp.dest(paths.dist));
     }
