@@ -9,8 +9,7 @@
   "main": "lib/uxrocket.autocomplete.js",
   "dependencies": {
     "jquery": "latest",
-    "handlebars": "latest",
-    "uxrocket.handlebars": "latest"
+    "handlebars": "latest"
   },
   "keywords": [
     "jQuery",
