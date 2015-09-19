@@ -1,8 +1,8 @@
 /*! UX Rocket Autocomplete 
  *  UX Rocket Autocomplete: A jQueryUI autocomplete wrapper 
  *  @author Bilal Cinarli <bcinarli@gmail.com> (http://bcinarli.com/) 
- *  @version 2.0.1 
- *  @build Sat Aug 29 2015 21:13:40 GMT+0300 (EEST) 
+ *  @version 2.0.2 
+ *  @build Sat Sep 19 2015 16:25:09 GMT+0300 (EEST) 
  */
 .uxr-autocomplete-wrap{position:relative;display:inline-block}.uxr-autocomplete-magnify{position:absolute;top:0;right:0;width:25px;height:100%;font-size:1.5em;font-style:normal;line-height:1;color:#37ade0}.uxr-autocomplete-magnify:before{display:block;content:"⚲";-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg)}.uxr-autocomplete-loading{position:absolute;top:5px;right:5px;width:20px;height:20px;border-radius:50%;border:dashed 2px #37ade0;-webkit-animation:uxr-autocomplete-loading 2s infinite linear;animation:uxr-autocomplete-loading 2s infinite linear}.uxr-autocomplete-loading:before{content:""}.uxr-autocomplete-select{position:absolute;list-style:none;overflow-y:scroll;max-height:250px;margin:0;padding:0;border:1px solid #ccc;background-color:#fff;box-sizing:border-box}.uxr-autocomplete-option{display:block;border-top:1px solid #e6e6e6}.uxr-autocomplete-option:first-child{border-top:none}.uxr-autocomplete-option a{display:block;padding:5px;color:#444}.uxr-autocomplete-highlight a,.uxr-autocomplete-option:hover a{background-color:#37ade0;color:#fff}.uxr-autocomplete-matched{font-weight:bold}@-webkit-keyframes uxr-autocomplete-loading{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes uxr-autocomplete-loading{from{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
 
