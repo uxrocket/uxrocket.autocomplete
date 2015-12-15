@@ -9,7 +9,7 @@
   "main": "lib/uxrocket.autocomplete.js",
   "dependencies": {
     "jquery": ">=1.11.1",
-	"uxrocket.jqueryui-lite": "latest",
+	"uxrocket.jqueryui-lite": "~0.1.1",
 	"handlebars": ">=2.0.0",
 	"uxrocket.handlebars": "latest"
   },
