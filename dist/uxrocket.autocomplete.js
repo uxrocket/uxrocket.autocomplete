@@ -527,7 +527,7 @@
     };
 
     // version
-    ux.version = '1.8.1';
+    ux.version = '1.8.3';
 
     // settings
     ux.settings = defaults;
