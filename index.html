@@ -1,0 +1,374 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Uxrocket.autocomplete by uxrocket</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Uxrocket.autocomplete</h1>
+        <p>Autocomplete Plugin</p>
+
+        <p class="view"><a href="https://github.com/uxrocket/uxrocket.autocomplete">View the Project on GitHub <small>uxrocket/uxrocket.autocomplete</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/uxrocket/uxrocket.autocomplete/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/uxrocket/uxrocket.autocomplete/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/uxrocket/uxrocket.autocomplete">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="ux-rocket-autocomplete-" class="anchor" href="#ux-rocket-autocomplete-" aria-hidden="true"><span class="octicon octicon-link"></span></a>UX Rocket Autocomplete <a href="https://travis-ci.org/uxrocket/uxrocket.autocomplete"><img src="https://travis-ci.org/uxrocket/uxrocket.autocomplete.svg?branch=master" alt="Build Status"></a>
+</h1>
+
+<p>Autocomplete plugini, farklı içerik formatlarını kullanarak input girişlerinde örnek liste gösterimi yapmaktadır. Ayrıca, autocomplete olarak çalışacak alanlarda <code>data</code> tanımları ile de ayarlar değiştirilebilir.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>auto-complete<span class="pl-pds">"</span></span> /&gt;
+&lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>auto-complete<span class="pl-pds">"</span></span> <span class="pl-e">data-type</span>=<span class="pl-s"><span class="pl-pds">"</span>image<span class="pl-pds">"</span></span> /&gt;
+&lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>auto-complete<span class="pl-pds">"</span></span> <span class="pl-e">data-type</span>=<span class="pl-s"><span class="pl-pds">"</span>category<span class="pl-pds">"</span></span> /&gt;
+&lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>auto-complete<span class="pl-pds">"</span></span> <span class="pl-e">data-type</span>=<span class="pl-s"><span class="pl-pds">"</span>tree<span class="pl-pds">"</span></span> /&gt;
+&lt;<span class="pl-ent">input</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>auto-complete<span class="pl-pds">"</span></span> <span class="pl-e">data-service</span>=<span class="pl-s"><span class="pl-pds">"</span>dataSource<span class="pl-pds">"</span></span> /&gt;</pre></div>
+
+<p>Arama yapılmaya başlandığında açılacak öneri listesi için en küçük JSON formatı</p>
+
+<div class="highlight highlight-source-json"><pre>[
+    {
+        <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Asp<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>01<span class="pl-pds">"</span></span>
+    },
+    {
+        <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Basic<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>02<span class="pl-pds">"</span></span>
+    }
+]</pre></div>
+
+<p>Tree görünüm türü için gelişmiş JSON formatı</p>
+
+<div class="highlight highlight-source-json"><pre>[
+    {
+        <span class="pl-s"><span class="pl-pds">"</span>category<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>A<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>image<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>image-01.jpg<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Asp<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>A, Asp<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Web Language<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>03<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>http://www.example.com<span class="pl-pds">"</span></span>
+    },
+    {
+        <span class="pl-s"><span class="pl-pds">"</span>category<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>B<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>image<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>image-02.jpg<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Basic<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>value<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>B, Basic<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>Desktop Language<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>04<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>url<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>http://www.sample.com<span class="pl-pds">"</span></span>
+    }
+]
+</pre></div>
+
+<h3>
+<a id="Örnek-handlebars-teması" class="anchor" href="#%C3%96rnek-handlebars-temas%C4%B1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Örnek HandleBars Teması</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> customList <span class="pl-k">=</span> {
+                     wrap<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>&lt;ul&gt;&lt;/ul&gt;<span class="pl-pds">'</span></span>,
+                     item<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>&lt;li&gt;<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+                             <span class="pl-s"><span class="pl-pds">'</span>&lt;a {{#if url}}href="{{url}}"{{/if}}&gt;<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+                                 <span class="pl-s"><span class="pl-pds">'</span>{{{name}}}<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+                                 <span class="pl-s"><span class="pl-pds">'</span>{{#if title}}<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+                                     <span class="pl-s"><span class="pl-pds">'</span>&lt;br /&gt;&lt;em&gt;{{substr title 50}}&lt;/em&gt;<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+                                 <span class="pl-s"><span class="pl-pds">'</span>{{/if}}<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+                             <span class="pl-s"><span class="pl-pds">'</span>&lt;/a&gt;<span class="pl-pds">'</span></span> <span class="pl-k">+</span>
+                           <span class="pl-s"><span class="pl-pds">'</span>&lt;/li&gt;<span class="pl-pds">'</span></span>
+                 }</pre></div>
+
+<h3>
+<a id="veri-listesi-servis-tanımı" class="anchor" href="#veri-listesi-servis-tan%C4%B1m%C4%B1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Veri Listesi Servis tanımı</h3>
+
+<p>Arama sonuçlarında çıkacak listeler için 3 farklı şekilde servis tanımı yapılabilir. Bu tanımların hepsi <code>service</code> tanım değerine göre kontrol edilmektedir. Binding sırasında verilen <code>service</code> değeri ya da elemana atanacak <code>data-service</code> değeri şu durumlarda çalışır</p>
+
+<ul>
+<li>URL pattern yapısında bir string (http(s)://, /, ./ ya da ../) ise, ilgili urlye ajax sorgusu yapılır</li>
+<li>
+<code>[{name: "", value: ""}]</code> yapısında bir <code>$(element).data('service', [])</code> data değeri ise doğrudan bu array içerisinde arama yapılır</li>
+<li>Elemana <code>data-service="myItemList"</code> eklenmi bir data attribute ile, sayfa içerisinde tanımlanmış yukarıda belirtilen örnek <em>json</em> yapısında <code>myItemList</code> isimli bir değişken aranıp, bulunduğunda, değeri içerisinde arama yapılır.</li>
+</ul>
+
+<h3>
+<a id="notlar" class="anchor" href="#notlar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notlar</h3>
+
+<p>Metin girişi sırası çıkan listede <code>data-type</code> değerine göre farklı görünümler oluşturulabilir. Ön tanımlı temalara göre <code>data-type</code> değerleri aşağıdaki gibi olabilir;</p>
+
+<ul>
+<li>
+<code>list</code>, sadece metin olan liste görünümü</li>
+<li>
+<code>image</code>, metin ve resimden oluşan liste görünümü</li>
+<li>
+<code>category</code>, kategorilere bölünmüş liste görünümü</li>
+<li>
+<code>tree</code>, kategorilere bölünmüş resimli liste görünümü</li>
+</ul>
+
+<p>Autocomplete pluginin sonuçları alacağı örnek json çıktısı yukarıdaki gibi olmalıdır. Servis'e bağlanılacak durumlarda <strong>Servis URL</strong>'i, JSON Objesi kullanılacak durumlarda <strong>Objenin Adı</strong> <code>service</code> değeri olarak tanımlanmalıdır. Gönderilen <code>data-type</code> değerine göre, listedeki ögeler için <code>category</code>, <code>image</code> alanları gönderilmeyebilir ya da boş gönderilebilir.</p>
+
+<p>Seçim yapıldıktan sonra, metin alanına eklenecek metin, data içindeki <strong><code>value</code></strong> değeri ile tanımlanır. Kullanım ihtiyacınıza göre bu değeri, listedeki değerden farklı olarak tanımlayabilirsiniz. Tanımlanmadığı durumlarda, <strong><code>name</code></strong> değer kullanılmaktadır.</p>
+
+<h3>
+<a id="tanımlar" class="anchor" href="#tan%C4%B1mlar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tanımlar</h3>
+
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Default</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>list</td>
+<td>Autocomplete seçeneklerinin çıkacağı liste görünümünü belirler. "list", "image", "category" ve "tree" değerlerini alabilir.</td>
+</tr>
+<tr>
+<td>service</td>
+<td>null</td>
+<td>Metin alanında yapılan sorgunun yapılıp sonuçların alınacağı data setidir. Ajax sorgusu yapılacak bir <strong>Servis URL</strong>'i, sayfa içerisindeki bir <strong>JSON Objesi</strong> ya da elemana <em>data</em> olarak eklenmiş bir <strong>Javascript Array</strong> 'i olabilir.</td>
+</tr>
+<tr>
+<td>item</td>
+<td>10</td>
+<td>Listede çıkacak maksimum seçenek sayısını belirler.</td>
+</tr>
+<tr>
+<td>minLength</td>
+<td>2</td>
+<td>En az kaç karakterden sonra listenin görünür olacağını belirler.</td>
+</tr>
+<tr>
+<td>formdata</td>
+<td>null</td>
+<td>Servis Ajax ile çağrılacağında, ihtiyaç halinde gönderilecek formun seçicisini belirler</td>
+</tr>
+<tr>
+<td>serialize</td>
+<td>String</td>
+<td>Ajax servisine gönderilen arama isteğine eklenen <strong>formdata</strong> ile tanımlanmış formun hangi formatta <em>serialize</em> edileceğini belirler. <em>String</em>, <em>Array</em> ya da <em>Object</em> şeklinde serialize işlemi gerçekleştirilebilir.</td>
+</tr>
+<tr>
+<td>queryType</td>
+<td>GET</td>
+<td>Server'a göndereceğiniz sorgunun tipini belirler. GET veya POST olarak 2 değer alabilir.</td>
+</tr>
+<tr>
+<td>characterTextLimit</td>
+<td>20</td>
+<td>Kategori'li tipi kullanıyorsanız, kategori text'inin kısaltmaya yöneliktir.</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>null</td>
+<td>Listeden seçim yapıldığında, seçimin idsi farklı bir alana eklenecekse, liste ile ilgili alanı css id ya da css classına göre ilişkilendirir.</td>
+</tr>
+<tr>
+<td>template</td>
+<td>null</td>
+<td>Listenin görünümü ön tanımlı varyasyonlar dışında olacaksa, yeni görünüm için kullanılacak <strong>Handlebars</strong> template objesidir.</td>
+</tr>
+<tr>
+<td>highlight</td>
+<td>true</td>
+<td>Listelerde match eden karakterlere highlight özelliğini ekler.</td>
+</tr>
+<tr>
+<td>arrowSelection</td>
+<td>false</td>
+<td>Listelerde ok tuşları ile hareket ettikten sonra <code>enter</code> tuşuna basarak sonucun seçilip seçilmeyeceğini belirtir.</td>
+</tr>
+<tr>
+<td>arrowNavigation</td>
+<td>true</td>
+<td>Listelerde ok tuşları ile hareket ederken satırın highlight olup olmayacağını belirtir.</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>false</td>
+<td>Ajax sorgusu yapılan aramalarda sonuçların ön belleğe kaydedilip kaydedilmeyeceğiniz belirtir.</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Data Attribute</th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>Autocomplete seçeneklerinin çıkacağı liste görünümünü belirler. "list", "image", "category" ve "tree" değerlerini alabilir.</td>
+</tr>
+<tr>
+<td>service</td>
+<td>Metin alanına girilen içeriğe göre sorgunun sonuçlarının alınacağı data setidir.</td>
+</tr>
+<tr>
+<td>item</td>
+<td>Listede çıkacak maksimum seçenek sayısını belirler.</td>
+</tr>
+<tr>
+<td>min-length</td>
+<td>En az kaç karakterden sonra listenin görünür olacağını belirler.</td>
+</tr>
+<tr>
+<td>formdata</td>
+<td>Servis Ajax ile çağrılacağında, ihtiyaç halinde <code>serialize()</code> edilerek gönderilecek formun seçicisini belirler</td>
+</tr>
+<tr>
+<td>query-type</td>
+<td>Server'a göndereceğiniz sorgunun tipini belirler. GET veya POST olarak 2 değer alabilir.</td>
+</tr>
+<tr>
+<td>props</td>
+<td>Metin alanının yanındaki büyüteç ikonuna tıklandığında çalışacak fonksiyonu çağırır.</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>Listeden seçim yapıldığında, seçimin idsi farklı bir alana eklenecekse, liste ile ilgili alanı css id ya da css classına göre ilişkilendirir.</td>
+</tr>
+<tr>
+<td>character-text-limit</td>
+<td>Kategori'li tipi kullanıyorsanız, kategori text'inin kısaltmaya yöneliktir.</td>
+</tr>
+<tr>
+<td>template</td>
+<td>Listenin görünümü ön tanımlı varyasyonlar dışında olacaksa, yeni görünüm için kullanılacak <strong>Handlebars</strong> template objesidir.</td>
+</tr>
+<tr>
+<td>highlight</td>
+<td>Listelerde match eden karakterlere highlight özelliğini ekler.</td>
+</tr>
+<tr>
+<td>arrow-selection</td>
+<td>Listelerde ok tuşları ile hareket ettikten sonra <code>enter</code> tuşuna basarak sonucun seçilip seçilmeyeceğini belirtir.</td>
+</tr>
+<tr>
+<td>arrow-navigation</td>
+<td>Listelerde ok tuşları ile hareket ederken satırın highlight olup olmayacağını belirtir.</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>Ajax sorgusu yapılan aramalarda sonuçların ön belleğe kaydedilip kaydedilmeyeceğiniz belirtir.</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Callback</th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onReady</td>
+<td>Autocomplete, form elemanına bağlandığında çalışacak fonksiyonu çağırır.</td>
+</tr>
+<tr>
+<td>onSelect</td>
+<td>Listeden seçim yapıldığında, çalışacak fonksiyonu çağırır.</td>
+</tr>
+<tr>
+<td>onButtonClick</td>
+<td>Metin alanının yanındaki büyüteç ikonuna tıklandığında çalışacak fonksiyonu çağırır.</td>
+</tr>
+<tr>
+<td>onClearCache</td>
+<td>Elemana eklenmiş ajax arama sonuçları ön belleği silindiğinde çalışacak fonksiyonu çağırır.</td>
+</tr>
+<tr>
+<td>onUpdate</td>
+<td>Elemana eklenmiş Autocomplete tanımları güncellendikten sonra çalışacak fonksiyonu çağırır.</td>
+</tr>
+<tr>
+<td>onRemove</td>
+<td>Eleman üzerinden Autocomplete kaldırıldığında çalışacak fonksiyonu çağırır.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="public-metodlar" class="anchor" href="#public-metodlar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Public Metodlar</h3>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$(selector).uxitdautocomplete(options)</td>
+<td>Bu method plugini manuel olarak bir elemana bağlamanızı sağlar.</td>
+</tr>
+<tr>
+<td>$.uxautocomplete</td>
+<td>Bu method pluginin detayını görmenizi sağlar</td>
+</tr>
+<tr>
+<td>$.uxautocomplete.version</td>
+<td>Sayfaya eklenmiş pluginin versiyon numarasını gösterir.</td>
+</tr>
+<tr>
+<td>$.uxautocomplete.settings</td>
+<td>Aktif pluginin ayarlarını gösterir.</td>
+</tr>
+<tr>
+<td>$.uxautocomplete.clearCache(el)</td>
+<td>Belirtilen elemanın ön belleğini siler. <code>el</code> değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarındaki ön belleği siler.</td>
+</tr>
+<tr>
+<td>$.uxautocomplete.update(el)</td>
+<td>Elemana eklenmiş tanımlar güncellendikten sonra Autocomplete özelliğinin çalışmasını yeni özelliklere göre tekrar elemana bağlar. <code>el</code> değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarını tekrar bağlar.</td>
+</tr>
+<tr>
+<td>$.uxautocomplete.remove(el)</td>
+<td>Elemanın üzerinden Autocomplete özelliğini kaldırır. <code>el</code> değeri boş gönderilirse, sayfadaki bütün Autocomplete elemanlarındaki bu özelliği kaldırır.</td>
+</tr>
+</tbody>
+</table>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/uxrocket">uxrocket</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-52570271-4");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
