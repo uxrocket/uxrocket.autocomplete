@@ -17,6 +17,7 @@
             service          : null,
             minLength        : 2,
             formdata         : null,
+            serialize        : 'String', // String || Array || Object
             categoryTextLimit: 25,
             queryType        : 'GET',
             hidden           : null,
@@ -25,6 +26,7 @@
             arrowSelection   : false,
             arrowNavigation  : true,
             cache            : false,
+            tabSelect        : false,
 
             // callbacks
             onReady      : false,
@@ -39,66 +41,67 @@
             list    : {
                 wrap: '<ul></ul>',
                 item: '' +
-                      '<li>' +
-                      '   <a {{#if url}}href="{{url}}"{{/if}}>' +
-                      '       {{{name}}}' +
-                      '       {{#if title}}' +
-                      '       <br /><em>{{substr title 50}}</em>' +
-                      '       {{/if}}' +
-                      '   </a>' +
-                      '</li>'
+                '<li>' +
+                '   <a {{#if url}}href="{{url}}"{{/if}}>' +
+                '       {{{name}}}' +
+                '       {{#if title}}' +
+                '       <br /><em>{{substr title 50}}</em>' +
+                '       {{/if}}' +
+                '   </a>' +
+                '</li>'
             },
             image   : {
                 wrap: '<ul></ul>',
                 item: '' +
-                      '<li>' +
-                      '   <a {{#if url}}href="{{url}}"{{/if}}>' +
-                      '       <span class="item-image"><img src="{{image}}"/></span> ' +
-                      '       {{{name}}}' +
-                      '       {{#if title}}' +
-                      '       <br /><em>{{substr title 50}}</em>' +
-                      '       {{/if}}' +
-                      '   </a>' +
-                      '</li>'
+                '<li>' +
+                '   <a {{#if url}}href="{{url}}"{{/if}}>' +
+                '       <span class="item-image"><img src="{{image}}"/></span> ' +
+                '       {{{name}}}' +
+                '       {{#if title}}' +
+                '       <br /><em>{{substr title 50}}</em>' +
+                '       {{/if}}' +
+                '   </a>' +
+                '</li>'
             },
             category: {
                 wrap: '<ul></ul>',
                 head: '' +
-                      '<li class="uxitd-autocomplete-category ui-autocomplete-category">' +
-                      '   <span class="uxitd-category-head" title="{{category}}">{{substr category 25}}</span>' +
-                      '</li>',
+                '<li class="uxitd-autocomplete-category ui-autocomplete-category">' +
+                '   <span class="uxitd-category-head" title="{{category}}">{{substr category 25}}</span>' +
+                '</li>',
                 item: '' +
-                      '<li>' +
-                      '   <a {{#if url}}href="{{url}}"{{/if}}>' +
-                      '       {{{name}}}' +
-                      '       {{#if title}}' +
-                      '       <br /><em>{{substr title 50}}</em>' +
-                      '       {{/if}}' +
-                      '   </a>' +
-                      '</li>'
+                '<li>' +
+                '   <a {{#if url}}href="{{url}}"{{/if}}>' +
+                '       {{{name}}}' +
+                '       {{#if title}}' +
+                '       <br /><em>{{substr title 50}}</em>' +
+                '       {{/if}}' +
+                '   </a>' +
+                '</li>'
             },
             tree    : {
                 wrap: '<ul></ul>',
                 head: '' +
-                      '<li class="uxitd-autocomplete-category ui-autocomplete-category">' +
-                      '   <span class="uxitd-category-head" title="{{category}}">{{substr category 25}}</span>' +
-                      '</li>',
+                '<li class="uxitd-autocomplete-category ui-autocomplete-category">' +
+                '   <span class="uxitd-category-head" title="{{category}}">{{substr category 25}}</span>' +
+                '</li>',
                 item: '' +
-                      '<li>' +
-                      '   <a {{#if url}}href="{{url}}"{{/if}}>' +
-                      '       <span class="item-image"><img src="{{image}}"/></span> ' +
-                      '       {{{name}}}' +
-                      '       {{#if title}}' +
-                      '       <br /><em>{{substr title 50}}</em>' +
-                      '       {{/if}}' +
-                      '   </a>' +
-                      '</li>'
+                '<li>' +
+                '   <a {{#if url}}href="{{url}}"{{/if}}>' +
+                '       <span class="item-image"><img src="{{image}}"/></span> ' +
+                '       {{{name}}}' +
+                '       {{#if title}}' +
+                '       <br /><em>{{substr title 50}}</em>' +
+                '       {{/if}}' +
+                '   </a>' +
+                '</li>'
             }
         },
         events = {
             click   : 'click.uxAutocomplete',
             search  : 'autocompletesearch.uxAutocomplete',
-            response: 'autocompleteresponse.uxAutocomplete'
+            response: 'autocompleteresponse.uxAutocomplete',
+            keydown : 'keydown.uxAutocomplete'
         },
         ns = {
             rocket    : 'uxRocket',
@@ -130,6 +133,8 @@
 
         // set template actions
         setTemplate($el);
+
+
     };
 
     var setLayout = function($el) {
@@ -205,7 +210,7 @@
                 }
 
                 if(_opts.formdata != null) {
-                    fdata = $(_opts.formdata).serialize();
+                    fdata = _opts.serialize === 'String' ? $(_opts.formdata).serialize() : $(_opts.formdata)['serialize' + _opts.serialize]();
                 }
 
                 $.ajax({
@@ -262,6 +267,31 @@
             $(this).siblings('.' + ns.loading).removeClass(ns.loading);
         });
 
+        if(_opts.tabSelect === true){
+            // Tab Key Control
+            $el.on(events.keydown, function(e){
+                var keyCode = e.keyCode || e.which;
+                if (keyCode == 9) {
+                    var autocomplete = $el.data("ui-autocomplete");
+                    // Ui Menu Item Regex set ui item
+                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex($el.val() ) + "$", "i");
+                    autocomplete.widget().children(".ui-menu-item").each(function() {
+                        //ui menu item
+                        var item = $(this).data("ui-autocomplete-item");
+                        if (matcher.test(item.label || item.value || item)) {
+                            autocomplete.selectedItem = item;
+                            return false;
+                        }
+                    });
+
+                    if (autocomplete.selectedItem) {
+                        autocomplete._trigger( "select", event, {item: autocomplete.selectedItem});
+                        $el.val(autocomplete.selectedItem.label);
+                    }
+                }
+            });
+        }
+
         $el.autocomplete({
             open     : function(event, ui) {
                 $(".uxitd-autocomplete-category").removeClass('ui-menu-item');
@@ -293,6 +323,8 @@
                         window.location = ui.item.url;
                     }
                 }
+
+                console.log(ui.item);
 
                 callback(_opts.onSelect);
             }
@@ -396,6 +428,24 @@
         }
 
         return item;
+    };
+
+    $.fn.serializeObject = function() {
+        var _o = {},
+            _a = this.serializeArray();
+
+        $.each(_a, function() {
+            if(_o[this.name]) {
+                if(!_o[this.name].push) {
+                    _o[this.name] = [_o[this.name]];
+                }
+                _o[this.name].push(this.value || '');
+            } else {
+                _o[this.name] = this.value || '';
+            }
+        });
+
+        return _o;
     };
 
     // global callback
@@ -527,7 +577,7 @@
     };
 
     // version
-    ux.version = '1.8.3';
+    ux.version = '1.9.0';
 
     // settings
     ux.settings = defaults;

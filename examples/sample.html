@@ -31,7 +31,7 @@
 				</p>
 
 				<p class="wrap">
-					<input type="text" class="autocomplete" placeholder="With images" data-type="image" />
+					<input type="text" class="autocomplete" data-tab-select="true" placeholder="With images" data-type="image" />
 				</p>
 
                 <p class="wrap">
@@ -43,14 +43,19 @@
                 </p>
 
 				<p class="wrap">
-					<input type="text" class="autocomplete test" id="ds" placeholder="Classic view with dynamic source" />
-				</p>
-
-				<p class="wrap">
 					<input type="text" class="autocomplete" id="inline" placeholder="Classic view with inline data source" data-service="dataSource" />
 				<p class="wrap">
 					<input type="text" class="autocomplete" id="inline-old" placeholder="Classic view with inline old data source" data-service="oldVersionDataSource" />
 				</p>
+
+				<p class="wrap">
+					<input type="text" class="autocomplete" id="tab-select" data-tab-select="true" placeholder="Tab Select Classic view with inline old data source" data-service="oldVersionDataSource" />
+				</p>
+
+				<p class="wrap">
+					<input type="text" class="autocomplete test" id="ds" placeholder="Classic view with dynamic source" />
+				</p>
+
 			</div>
 
 			<form style="display: none" id="ac-form">

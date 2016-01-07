@@ -1,3 +1,6 @@
+## Versiyon 1.9.0
+- YENİ: Autocomplete tab select özelliği eklendi.
+
 ## Versiyon 1.8.0
 - YENİ: Autocomplete yapılacak veri listesi için `data` şeklinde Javascript arrayi eklenebilir hale getirildi. `$(element).data('service', [array değeri])` şeklinde veri listesi ataması yapılabilir.
 

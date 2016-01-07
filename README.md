@@ -102,6 +102,7 @@ highlight            | true                 | Listelerde match eden karakterlere
 arrowSelection       | false                | Listelerde ok tuşları ile hareket ettikten sonra `enter` tuşuna basarak sonucun seçilip seçilmeyeceğini belirtir.
 arrowNavigation      | true                 | Listelerde ok tuşları ile hareket ederken satırın highlight olup olmayacağını belirtir.
 cache                | false                | Ajax sorgusu yapılan aramalarda sonuçların ön belleğe kaydedilip kaydedilmeyeceğiniz belirtir.
+tabSelect            | false                | Listede bulunan bir ismi tamamen yazıldıktan sonra tab ile bir sonraki inputa geçerken listedeki elemanın seçilmesini sağlar.
 
 
 Data Attribute			   | &nbsp;
@@ -120,6 +121,7 @@ highlight                  | Listelerde match eden karakterlere highlight özell
 arrow-selection            | Listelerde ok tuşları ile hareket ettikten sonra `enter` tuşuna basarak sonucun seçilip seçilmeyeceğini belirtir.
 arrow-navigation           | Listelerde ok tuşları ile hareket ederken satırın highlight olup olmayacağını belirtir.
 cache                      | Ajax sorgusu yapılan aramalarda sonuçların ön belleğe kaydedilip kaydedilmeyeceğiniz belirtir.
+tab-select                 | Listede bulunan bir ismi tamamen yazıldıktan sonra tab ile bir sonraki inputa geçerken listedeki elemanın seçilmesini sağlar.
 
 
 Callback			 | &nbsp;

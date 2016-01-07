@@ -1,6 +1,6 @@
 {
   "name": "uxrocket.autocomplete",
-  "version": "1.8.3",
+  "version": "1.9.0",
   "description": "UX Rocket Autocomplete: A jQueryUI autocomplete wrapper",
   "repository": {
     "type": "git",
@@ -20,6 +20,11 @@
 	"uxrocket"
   ],
   "author": "Bilal Cinarli <bcinarli@gmail.com> (http://bcinarli.com/)",
+  "contributors": [{
+    "name"      : "Mesut GÖK",
+    "url"       : "http://github.com/mesutgok",
+    "email"     : "mesutgok@hotmail.com"
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/uxrocket/uxrocket.autocomplete/issues"
