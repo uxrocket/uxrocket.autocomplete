@@ -324,8 +324,6 @@
                     }
                 }
 
-                console.log(ui.item);
-
                 callback(_opts.onSelect);
             }
         });
