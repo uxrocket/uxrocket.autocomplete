@@ -1,3 +1,6 @@
+## Versiyon 1.9.1
+- FIX: Tab select durumunda hataya sebep olan "undefined event" problemi çözüldüi
+
 ## Versiyon 1.9.0
 - YENİ: Autocomplete tab select özelliği eklendi.
 

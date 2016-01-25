@@ -41,60 +41,60 @@
             list    : {
                 wrap: '<ul></ul>',
                 item: '' +
-                '<li>' +
-                '   <a {{#if url}}href="{{url}}"{{/if}}>' +
-                '       {{{name}}}' +
-                '       {{#if title}}' +
-                '       <br /><em>{{substr title 50}}</em>' +
-                '       {{/if}}' +
-                '   </a>' +
-                '</li>'
+                      '<li>' +
+                      '   <a {{#if url}}href="{{url}}"{{/if}}>' +
+                      '       {{{name}}}' +
+                      '       {{#if title}}' +
+                      '       <br /><em>{{substr title 50}}</em>' +
+                      '       {{/if}}' +
+                      '   </a>' +
+                      '</li>'
             },
             image   : {
                 wrap: '<ul></ul>',
                 item: '' +
-                '<li>' +
-                '   <a {{#if url}}href="{{url}}"{{/if}}>' +
-                '       <span class="item-image"><img src="{{image}}"/></span> ' +
-                '       {{{name}}}' +
-                '       {{#if title}}' +
-                '       <br /><em>{{substr title 50}}</em>' +
-                '       {{/if}}' +
-                '   </a>' +
-                '</li>'
+                      '<li>' +
+                      '   <a {{#if url}}href="{{url}}"{{/if}}>' +
+                      '       <span class="item-image"><img src="{{image}}"/></span> ' +
+                      '       {{{name}}}' +
+                      '       {{#if title}}' +
+                      '       <br /><em>{{substr title 50}}</em>' +
+                      '       {{/if}}' +
+                      '   </a>' +
+                      '</li>'
             },
             category: {
                 wrap: '<ul></ul>',
                 head: '' +
-                '<li class="uxitd-autocomplete-category ui-autocomplete-category">' +
-                '   <span class="uxitd-category-head" title="{{category}}">{{substr category 25}}</span>' +
-                '</li>',
+                      '<li class="uxitd-autocomplete-category ui-autocomplete-category">' +
+                      '   <span class="uxitd-category-head" title="{{category}}">{{substr category 25}}</span>' +
+                      '</li>',
                 item: '' +
-                '<li>' +
-                '   <a {{#if url}}href="{{url}}"{{/if}}>' +
-                '       {{{name}}}' +
-                '       {{#if title}}' +
-                '       <br /><em>{{substr title 50}}</em>' +
-                '       {{/if}}' +
-                '   </a>' +
-                '</li>'
+                      '<li>' +
+                      '   <a {{#if url}}href="{{url}}"{{/if}}>' +
+                      '       {{{name}}}' +
+                      '       {{#if title}}' +
+                      '       <br /><em>{{substr title 50}}</em>' +
+                      '       {{/if}}' +
+                      '   </a>' +
+                      '</li>'
             },
             tree    : {
                 wrap: '<ul></ul>',
                 head: '' +
-                '<li class="uxitd-autocomplete-category ui-autocomplete-category">' +
-                '   <span class="uxitd-category-head" title="{{category}}">{{substr category 25}}</span>' +
-                '</li>',
+                      '<li class="uxitd-autocomplete-category ui-autocomplete-category">' +
+                      '   <span class="uxitd-category-head" title="{{category}}">{{substr category 25}}</span>' +
+                      '</li>',
                 item: '' +
-                '<li>' +
-                '   <a {{#if url}}href="{{url}}"{{/if}}>' +
-                '       <span class="item-image"><img src="{{image}}"/></span> ' +
-                '       {{{name}}}' +
-                '       {{#if title}}' +
-                '       <br /><em>{{substr title 50}}</em>' +
-                '       {{/if}}' +
-                '   </a>' +
-                '</li>'
+                      '<li>' +
+                      '   <a {{#if url}}href="{{url}}"{{/if}}>' +
+                      '       <span class="item-image"><img src="{{image}}"/></span> ' +
+                      '       {{{name}}}' +
+                      '       {{#if title}}' +
+                      '       <br /><em>{{substr title 50}}</em>' +
+                      '       {{/if}}' +
+                      '   </a>' +
+                      '</li>'
             }
         },
         events = {
@@ -269,8 +269,9 @@
 
         if(_opts.tabSelect === true){
             // Tab Key Control
-            $el.on(events.keydown, function(e){
-                var keyCode = e.keyCode || e.which;
+            $el.on(events.keydown, function(event){
+                var keyCode = event.keyCode || event.which;
+
                 if (keyCode == 9) {
                     var autocomplete = $el.data("ui-autocomplete");
                     // Ui Menu Item Regex set ui item
@@ -285,7 +286,7 @@
                     });
 
                     if (autocomplete.selectedItem) {
-                        autocomplete._trigger( "select", event, {item: autocomplete.selectedItem});
+                        autocomplete._trigger("select", event, {item: autocomplete.selectedItem});
                         $el.val(autocomplete.selectedItem.label);
                     }
                 }
@@ -575,7 +576,7 @@
     };
 
     // version
-    ux.version = '1.9.0';
+    ux.version = '1.9.1';
 
     // settings
     ux.settings = defaults;
