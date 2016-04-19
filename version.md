@@ -1,5 +1,8 @@
+## Versiyon 1.9.2
+- FIX: Readonly olan inputlarda ikon ve input üzerin çalışmalar iptal edildi
+
 ## Versiyon 1.9.1
-- FIX: Tab select durumunda hataya sebep olan "undefined event" problemi çözüldüi
+- FIX: Tab select durumunda hataya sebep olan "undefined event" problemi çözüldü
 
 ## Versiyon 1.9.0
 - YENİ: Autocomplete tab select özelliği eklendi.
