@@ -470,7 +470,7 @@
                 categoryTemplate = this.template.head ? Handlebars.compile(this.template.head) : false,
                 currentCategory = '';
 
-            $.each(results, function(index, item) {
+            $.each(results.slice(0,this.options.item), function(index, item) {
                 var rendered;
 
                 rendered = _this.renderItem(item, itemTemplate);
