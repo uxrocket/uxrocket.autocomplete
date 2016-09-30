@@ -1,3 +1,6 @@
+## Versiyon 1.9.3
+- DEĞİŞİKLİK: Readonly durumlarda search icon'unun işlevi kaldırıldı
+
 ## Versiyon 1.9.2
 - FIX: Readonly olan inputlarda ikon ve input üzerin çalışmalar iptal edildi
 

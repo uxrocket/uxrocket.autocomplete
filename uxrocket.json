@@ -1,0 +1,11 @@
+{
+  "name": "Autocomplete",
+  "registry": "uxrocket.autocomplete",
+  "version": "1.9.3",
+  "paths": {
+    "lib": "lib/",
+    "dist": "dist/",
+    "test": "test/",
+    "examples": "examples/"
+  }
+}
