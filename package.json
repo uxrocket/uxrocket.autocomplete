@@ -1,6 +1,6 @@
 {
   "name": "uxrocket.autocomplete",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "description": "UX Rocket Autocomplete: A jQueryUI autocomplete wrapper",
   "repository": {
     "type": "git",
@@ -8,9 +8,7 @@
   },
   "dependencies": {
 	"jquery": "latest",
-	"uxrocket.jqueryui-lite": "latest",
-	"handlebars": "latest",
-	"uxrocket.handlebars": "latest"
+	"handlebars": "latest"
   },
   "keywords": [
     "jQuery",
@@ -29,5 +27,21 @@
   "bugs": {
     "url": "https://github.com/uxrocket/uxrocket.autocomplete/issues"
   },
-  "homepage": "https://github.com/uxrocket/uxrocket.autocomplete"
+  "homepage": "https://github.com/uxrocket/uxrocket.autocomplete",
+  "devDependencies": {
+    "blanket": "^1.1.7",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-connect": "^2.2.0",
+    "gulp-csslint": "^0.2.0",
+    "gulp-header": "^1.2.2",
+    "gulp-jshint": "^1.11.2",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-mocha-phantomjs": "^0.8.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0"
+  }
 }
