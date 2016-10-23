@@ -126,7 +126,7 @@ cache                      | Ajax sorgusu yapılan aramalarda sonuçların ön b
 Callback			 | &nbsp;
 -------------------- | -----
 onReady              | Autocomplete, form elemanına bağlandığında çalışacak fonksiyonu çağırır.
-onSelect             | Listeden seçim yapıldığında, çalışacak fonksiyonu çağırır.
+onSelect             | Listeden seçim yapıldığında, çalışacak fonksiyonu çağırır. Parametre olarak seçilen objeyi döndürür.
 onButtonClick        | Metin alanının yanındaki büyüteç ikonuna tıklandığında çalışacak fonksiyonu çağırır.
 onClearCache         | Elemana eklenmiş ajax arama sonuçları ön belleği silindiğinde çalışacak fonksiyonu çağırır.
 onUpdate             | Elemana eklenmiş Autocomplete tanımları güncellendikten sonra çalışacak fonksiyonu çağırır.
