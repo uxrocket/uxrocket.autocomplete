@@ -291,7 +291,7 @@
             this.setValue(selected);
             this.hideContainer();
 
-            utils.callback(this.options.onSelect);
+            utils.callback(this.options.onSelect(selected));
         },
 
         setValue: function(selected) {
