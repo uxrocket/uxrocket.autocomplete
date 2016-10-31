@@ -41,7 +41,7 @@
             // callbacks
             onReady      : false,
             onSearch     : false,
-            onSelect     : false,
+            onSelect     : function(s){},
             onEnter      : false,
             onButtonClick: false,
             onClearCache : false,
