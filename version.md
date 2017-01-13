@@ -1,3 +1,6 @@
+## Versiyon 2.0.3
+- FIX: Unit test'ler fixlendi.
+
 ## Versiyon 1.8.0
 - YENİ: Autocomplete yapılacak veri listesi için `data` şeklinde Javascript arrayi eklenebilir hale getirildi. `$(element).data('service', [array değeri])` şeklinde veri listesi ataması yapılabilir.
 
@@ -41,7 +44,7 @@
 - YENİ: Öneri listesinde oklarla hareket edilip enterla seçim yapıldığında url yönlendirme seçeneği eklendi.
 
 ## Versiyon 1.3.0
-- DEĞİŞİKLİK: Input elemanından wrapper üzerine class isimleri aktarılırken, "uxitd-autocomplete-ready" ve selector classı kaldırılmaya başlandı. 
+- DEĞİŞİKLİK: Input elemanından wrapper üzerine class isimleri aktarılırken, "uxitd-autocomplete-ready" ve selector classı kaldırılmaya başlandı.
 
 ## Versiyon 1.2.3
 - FIX: Klavye ile autocomplete önerilerinde hareket ederken highlight görünümü eklendi.

@@ -23,9 +23,8 @@
 .uxr-autocomplete-magnify:before {
   display: block;
   content: "⚲";
-  -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
 }
 
 .uxr-autocomplete-loading {
@@ -36,8 +35,7 @@
   height: 20px;
   border-radius: 50%;
   border: dashed 2px #37ade0;
-  -webkit-animation: uxr-autocomplete-loading 2s infinite linear;
-          animation: uxr-autocomplete-loading 2s infinite linear;
+  animation: uxr-autocomplete-loading 2s infinite linear;
 }
 
 .uxr-autocomplete-loading:before {
@@ -71,8 +69,7 @@
   color: #444;
 }
 
-.uxr-autocomplete-highlight a,
-.uxr-autocomplete-option:hover a {
+.uxr-autocomplete-highlight a, .uxr-autocomplete-option:hover a {
   background-color: #37ade0;
   color: #fff;
 }
@@ -81,24 +78,11 @@
   font-weight: bold;
 }
 
-@-webkit-keyframes uxr-autocomplete-loading {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
 @keyframes uxr-autocomplete-loading {
   from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
