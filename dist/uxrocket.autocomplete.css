@@ -23,8 +23,9 @@
 .uxr-autocomplete-magnify:before {
   display: block;
   content: "⚲";
-  -ms-transform: rotate(-45deg);
-      transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 .uxr-autocomplete-loading {
@@ -35,7 +36,8 @@
   height: 20px;
   border-radius: 50%;
   border: dashed 2px #37ade0;
-  animation: uxr-autocomplete-loading 2s infinite linear;
+  -webkit-animation: uxr-autocomplete-loading 2s infinite linear;
+          animation: uxr-autocomplete-loading 2s infinite linear;
 }
 
 .uxr-autocomplete-loading:before {
@@ -78,11 +80,24 @@
   font-weight: bold;
 }
 
-@keyframes uxr-autocomplete-loading {
+@-webkit-keyframes uxr-autocomplete-loading {
   from {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes uxr-autocomplete-loading {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
