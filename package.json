@@ -7,7 +7,7 @@
     "url": "https://github.com/uxrocket/uxrocket.autocomplete.git"
   },
   "dependencies": {
-    "jquery": "latest",
+    "jquery": "^2.2.1",
     "handlebars": "latest"
   },
   "keywords": [

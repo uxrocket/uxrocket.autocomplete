@@ -71,8 +71,7 @@
   color: #444;
 }
 
-.uxr-autocomplete-highlight a,
-.uxr-autocomplete-option:hover a {
+.uxr-autocomplete-highlight a, .uxr-autocomplete-option:hover a {
   background-color: #37ade0;
   color: #fff;
 }

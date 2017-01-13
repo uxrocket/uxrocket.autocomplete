@@ -58,7 +58,7 @@ var tasks = {
                 outputStyle: "expanded"
             }))
             .pipe(autoprefixer({
-                browsers: ['last 3 versions']
+                browsers: ['last 5 versions']
             }))
             .pipe(rename('uxrocket.autocomplete.css'))
             .pipe(gulp.dest(paths.dist))
@@ -66,7 +66,7 @@ var tasks = {
                 outputStyle: "compressed"
             })).on("error", notify.onError("Error: <%= error.message %>"))
             .pipe(autoprefixer({
-                browsers: ['last 3 versions']
+                browsers: ['last 5 versions']
             }))
             .pipe(rename('uxrocket.autocomplete.min.css'))
             .pipe(header(banner, {pkg: pkg, date: new Date()}))
