@@ -103,7 +103,9 @@ highlight            | true                 | Listelerde match eden karakterlere
 arrowSelection       | false                | Listelerde ok tuşları ile hareket ettikten sonra `enter` tuşuna basarak sonucun seçilip seçilmeyeceğini belirtir.
 arrowNavigation      | true                 | Listelerde ok tuşları ile hareket ederken satırın highlight olup olmayacağını belirtir.
 cache                | false                | Ajax sorgusu yapılan aramalarda sonuçların ön belleğe kaydedilip kaydedilmeyeceğiniz belirtir.
-
+debounce             | 0                    | Yazmaya başladıktan sonra servisi çağırmak için gecikme süresi ayarlar (ms).
+customProp           | false                | Çağırılan ajax servis direkt array'i direkt değil de result içerisinde dönüyorsa ilgili array set edilebilir örn : 'result' böylece plugin dönen jsonda result objesinin içerisindeki arraya set olur.
+searchTerm           | 'term'               | Çağırılan serviste term propertysi default olarak 'term' gelmiyorsa istenilen şekilde set edilebilir.
 
 Data Attribute			   | &nbsp;
 -------------------------- | -----

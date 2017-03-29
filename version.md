@@ -1,3 +1,9 @@
+## Versiyon 2.0.4
+- FIX: Çalışmayan hidden property işlevsel hale getirildi.
+- YENİ: Search parametresi customize edilebilir hale getirildi.
+- YENİ: Servis cevabı artık sadece gelen array'e değil set edilen propertydeki arrayi alabiliyor.
+- YENİ: Debounce özelliği eklendi.
+
 ## Versiyon 2.0.3
 - FIX: Unit test'ler fixlendi.
 
